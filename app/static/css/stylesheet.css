@@ -1,0 +1,28 @@
+body {
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+h1 {
+    padding: 50px;
+    text-align: center;
+}
+
+p1 {
+    font-size: x-large;
+    text-align: center;
+}
+
+p2 {
+    font-size: large;
+}
+
+.center {
+    text-align: center;
+}
+
+.topnav-right {
+    float: right;
+}
+
+
