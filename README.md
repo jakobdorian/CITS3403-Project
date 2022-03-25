@@ -3,6 +3,10 @@
 ```
 python3
 ```
+## Create a virtual environment with this command
+```
+python3 -m venv venv
+```
 ## Once your in the web directory run this command
 ```
 source venv/bin/activate
