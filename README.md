@@ -7,9 +7,13 @@ python3
 ```
 python3 -m venv venv
 ```
-## Once your in the web directory run this command
+## Once your in the web directory run this command (MAC or LINUX)
 ```
 source venv/bin/activate
+```
+### Once your in the web directory run this command (WINDOWS)
+```
+venv\Scripts\activate
 ```
 ## Once in the virtual environment run this command
 ```
