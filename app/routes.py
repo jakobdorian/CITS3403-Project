@@ -52,3 +52,7 @@ def logout():
 def user():
     if current_user.is_authenticated:
         return render_template('user.html', title='Profile')
+
+@app.route('/game')
+def game():
+    return render_template('game.html', title='Game')
