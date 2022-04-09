@@ -25,4 +25,24 @@ p2 {
     float: right;
 }
 
+/* dark theme */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #212121;
+        color: white;
+    
+    }
+
+    a {
+        color: white !important;
+    }
+
+    .navbar-default {
+        background: #212121;
+        border-color: #4c4c4d;
+        color: white
+    }
+
+  }
+
 
