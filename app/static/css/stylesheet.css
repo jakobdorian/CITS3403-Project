@@ -43,6 +43,14 @@ p2 {
         color: white
     }
 
+    .submit-dark {
+        color: black !important;
+    }
+
+    .reg-dark {
+        color: #337ab7 !important;
+    }
+
   }
 
 
