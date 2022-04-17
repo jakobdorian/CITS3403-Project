@@ -26,7 +26,7 @@ p2 {
 }
 
 /* dark theme */
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
     body {
         background: #212121;
         color: white;
@@ -51,6 +51,6 @@ p2 {
         color: #337ab7 !important;
     }
 
-  }
+  } */
 
 
