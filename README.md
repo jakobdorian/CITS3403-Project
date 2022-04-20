@@ -7,6 +7,10 @@ python3
 ```
 python3 -m venv venv
 ```
+## Create a virtual environment with this command (WINDOWS)
+```
+py -m venv venv
+```
 ## Once your in the web directory run this command (MAC or LINUX)
 ```
 source venv/bin/activate
