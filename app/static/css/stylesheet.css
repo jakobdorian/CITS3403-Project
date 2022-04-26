@@ -25,6 +25,36 @@ p2 {
     float: right;
 }
 
+.game-row {
+    text-align: center;
+}
+
+.game-tile {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    background-color: lightgrey;
+}
+
+.game-tile:hover {
+    border: solid 1px black;
+}
+
+.correct {
+    background-color: blue;
+}
+
+.incorrect {
+    background-color: red;
+}
+
+.hidden-tile {
+    background-color: lightgrey;
+}
+
+.game-tile.tileClicked:hover {
+    border: none;
+}
 /* dark theme */
 /* @media (prefers-color-scheme: dark) {
     body {
