@@ -46,7 +46,7 @@
                 <div class="game-tile correct hidden-tile" onclick="readClicks(event)" data-tile="correct" id="29"></div>
                 <div class="game-tile incorrect hidden-tile" onclick="readClicks(event)" data-tile="incorrect" id="30"></div>
             </div>
-            <h1 class="game-score">Score: </h1>
+            <h1 id="game-score"></h1>
         </div>
         <script src = "{{ url_for('static', filename='js/game.js') }}"></script>
     </body>

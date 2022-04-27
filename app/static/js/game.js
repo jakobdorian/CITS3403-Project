@@ -1,28 +1,12 @@
-// const tiles = document.querySelectorAll('.game-tile');
 let tiles = document.querySelectorAll('.game-tile');
 let normalTile, correctTile;
-// let tileFlipped = false;
+let score = 0;
 
-// tiles.forEach(tile => tile.addEventListener('click', myFunction()));
-
-
-
-// var score = 0;
-
-// const til = document.getElementById('.game-tile');
-// let til = document.querySelector('.game-tile');
-
-// let til = document.querySelectorAll('.game-tile');
-
-// til.addEventListener('click', myFunction);
-
-
-
+// FUNCTION THAT READS IN CLICKS FROM USER
 function readClicks(e) {
     // myFunction();
     const currentClick = e.currentTarget;
     let tileFlipped = null;
-    var score = 0;
 
     if(currentClick.className.includes('tileClicked')) {
         return;
@@ -34,51 +18,20 @@ function readClicks(e) {
     
     currentClick.className += ' tileClicked';
 
-    if(currentClick.className.includes('correct')) {
+    // VERY SCUFFED
+    if(currentClick.className.includes('incorrect')) {
+    } else {
         score++;
-        console.log(score);
     }
+
+    document.getElementById("game-score").innerHTML = "Score: " + score;
     
+    // MARKS TILE WHEN CLICKED, SO THE USER CANNOT CLICK AGAIN
     if(!tileFlipped) {
         tileFlipped = currentClick;
     } else if(tileFlipped) {
         if(tileFlipped.getAttribute('data-tile') === currentClick.getAttribute('data-tile')) {
-            // tileFlipped.setAttribute('data-tileclicked', true);
-            // tileFlipped.className += ' tileClicked';
-            // currentClick.className += ' tileClicked';
         }
     }
 }
-
-// tiles.forEach(tile => tile.addEventListener('click', readClicks()));
-
-function myFunction(event) {
-    // console.log("working!");
-    // console.log(this);
-    // // tileClicked();
-
-    
-    
-    // til.removeEventListener('click', myFunction);
-
-    // let til = document.getElementById('.game-tile');
-    // til.addEventListener('click', myFunction);
-    // removeHandler();
-
-}
-
-function removeHandler() {
-    // tiles.forEach(tile => tile.removeEventListener('click', myFunction));
-    
-}
-
-function tileClicked() {
-    score++;
-}
-
-// tiles.addEventListener('click', myFunction);
-
-
-// tiles.forEach(tile => tile.addEventListener('click', myFunction));
-
 
