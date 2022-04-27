@@ -1,4 +1,4 @@
-# 3403 Project
+# CITS3403 Project
 ## Make sure you have python installed.
 ```
 python3
