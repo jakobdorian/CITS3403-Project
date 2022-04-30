@@ -1,4 +1,4 @@
-body {
+/* body {
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -24,23 +24,31 @@ p2 {
 .topnav-right {
     float: right;
 }
+*/
 
-/* dark theme */
-/* @media (prefers-color-scheme: dark) {
-    body {
-        background: #212121;
-        color: white;
+ /* @media (prefers-color-scheme: dark) { */
     
+    body {
+        background: #6c29e7;
+        color: white;
+
     }
+
+    .center, h1{
+        text-align: center;
+        font-family: "Lucida Console", "Courier New", monospace;
+    } 
 
     a {
         color: white !important;
     }
 
     .navbar-default {
-        background: #212121;
+        background: #28043b;
         border-color: #4c4c4d;
-        color: white
+        color: white;
+        font-family: "Lucida Console", "Courier New", monospace;
+
     }
 
     .submit-dark {
@@ -50,7 +58,4 @@ p2 {
     .reg-dark {
         color: #337ab7 !important;
     }
-
-  } */
-
 
