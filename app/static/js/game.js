@@ -100,11 +100,11 @@ function shuffle(array){
     final = [];
     ids = [];
     
-    //id list
-    for (let i = 0; i < array.length; i++){
-        ids.push(array[i])
+    //generate idList 
+    for (let i = 1; i < 31; i++){
+        ids.push(i)
     }
-
+    
     //generating pattern
     for (let i = 0; i < 10; i ++){
         var item = array[Math.floor(Math.random()*array.length)];
