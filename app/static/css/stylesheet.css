@@ -55,6 +55,36 @@ p2 {
 .game-tile.tileClicked:hover {
     border: none;
 }
+
+head,body{
+    text-align: center;
+}
+
+.empty{
+    background-color: lightgrey;    
+}
+
+.answer{
+    background-color: aqua;
+}
+
+.wrong{
+    background-color: red;
+}
+
+.reveal{
+    background-color: limegreen;
+}
+
+span{
+    display: inline-block;
+    padding: 2.5%;
+    margin-right: 1px;
+    margin-bottom: 1px;
+    border: 2px solid black;
+}
+
+
 /* dark theme */
 /* @media (prefers-color-scheme: dark) {
     body {

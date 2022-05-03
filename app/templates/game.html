@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>prototype 1</h1>
+<h1>prototype 1</h1>
     <body>
+        <!--
         <div class="game-container">
             <div class="game-row">
                 <div class="game-tile correct hidden-tile" onclick="readClicks(event)" data-tile="correct" id="1"></div>
@@ -48,6 +49,7 @@
             </div>
             <h1 id="game-score"></h1>
         </div>
+        -->
         <script src = "{{ url_for('static', filename='js/game.js') }}"></script>
     </body>
 {% endblock %}
