@@ -26,8 +26,70 @@ p2 {
 }
 */
 
+.game-row {
+    text-align: center;
+}
+
+.game-tile {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    background-color: lightgrey;
+}
+
+.game-tile:hover {
+    border: solid 1px black;
+}
+
+.correct {
+    background-color: blue;
+}
+
+.incorrect {
+    background-color: red;
+}
+
+.hidden-tile {
+    background-color: lightgrey;
+}
+
+.game-tile.tileClicked:hover {
+    border: none;
+}
+
+head,body{
+    text-align: center;
+}
+
+.empty{
+    background-color: lightgrey;    
+}
+
+.answer{
+    background-color: aqua;
+}
+
+.wrong{
+    background-color: red;
+}
+
+.reveal{
+    background-color: limegreen;
+}
+
+span{
+    display: inline-block;
+    padding: 2.5%;
+    margin-right: 1px;
+    margin-bottom: 1px;
+    border: 2px solid black;
+}
+
+
+/* dark theme */
+/* @media (prefers-color-scheme: dark) {
+=======
  /* @media (prefers-color-scheme: dark) { */
-    
     body {
         background: #6c29e7;
         color: white;

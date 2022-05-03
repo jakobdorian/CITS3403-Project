@@ -1,9 +1,55 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>TBD Game</h1>
-    <div class = "center">
-        <p1>This is the game page.</p1> <br>
-        <p2>More to come soon...</p2>
-    </div>
+<h1>prototype 1</h1>
+    <body>
+        <!--
+        <div class="game-container">
+            <div class="game-row">
+                <div class="game-tile correct hidden-tile" onclick="readClicks(event)" data-tile="correct" id="1"></div>
+                <div class="game-tile correct hidden-tile" onclick="readClicks(event)" data-tile="correct" id="2"></div>
+                <div class="game-tile correct hidden-tile"  onclick="readClicks(event)" data-tile="correct" id="3"></div>
+                <div class="game-tile incorrect hidden-tile" onclick="readClicks(event)" data-tile="incorrect" id="4"></div>
+                <div class="game-tile correct hidden-tile" onclick="readClicks(event)" data-tile="correct" id="5"></div>
+            </div>
+            <div class="game-row">
+                <div class="game-tile incorrect hidden-tile" onclick="readClicks(event)" data-tile="incorrect" id="6"></div>
+                <div class="game-tile incorrect hidden-tile" onclick="readClicks(event)" data-tile="incorrect" id="7"></div>
+                <div class="game-tile incorrect hidden-tile" onclick="readClicks(event)" data-tile="incorrect" id="8"></div>
+                <div class="game-tile correct hidden-tile" onclick="readClicks(event)" data-tile="correct" id="9"></div>
+                <div class="game-tile incorrect hidden-tile" onclick="readClicks(event)" data-tile="incorrect" id="10"></div>
+            </div>
+            <div class="game-row">
+                <div class="game-tile correct hidden-tile" onclick="readClicks(event)" data-tile="correct" id="11"></div>
+                <div class="game-tile incorrect hidden-tile" onclick="readClicks(event)" data-tile="incorrect" id="12"></div>
+                <div class="game-tile correct hidden-tile" onclick="readClicks(event)"  data-tile="correct"id="13"></div>
+                <div class="game-tile correct hidden-tile" onclick="readClicks(event)" data-tile="correct" id="14"></div>
+                <div class="game-tile incorrect hidden-tile" onclick="readClicks(event)" data-tile="incorrect" id="15"></div>
+            </div>
+            <div class="game-row">
+                <div class="game-tile correct hidden-tile" onclick="readClicks(event)" data-tile="correct" id="16"></div>
+                <div class="game-tile incorrect hidden-tile" onclick="readClicks(event)" data-tile="incorrect" id="17"></div>
+                <div class="game-tile correct hidden-tile" onclick="readClicks(event)" data-tile="correct" id="18"></div>
+                <div class="game-tile incorrect hidden-tile" onclick="readClicks(event)" data-tile="incorrect" id="19"></div>
+                <div class="game-tile incorrect hidden-tile" onclick="readClicks(event)" data-tile="incorrect" id="20"></div>
+            </div>
+            <div class="game-row">
+                <div class="game-tile correct hidden-tile" onclick="readClicks(event)" data-tile="correct" id="21"></div>
+                <div class="game-tile incorrect hidden-tile" onclick="readClicks(event)" data-tile="incorrect" id="22"></div>
+                <div class="game-tile incorrect hidden-tile" onclick="readClicks(event)" data-tile="incorrect" id="23"></div>
+                <div class="game-tile correct hidden-tile" onclick="readClicks(event)" data-tile="correct" id="24"></div>
+                <div class="game-tile correct hidden-tile" onclick="readClicks(event)" data-tile="correct" id="25"></div>
+            </div>
+            <div class="game-row">
+                <div class="game-tile incorrect hidden-tile" onclick="readClicks(event)" data-tile="incorrect" id="26"></div>
+                <div class="game-tile incorrect hidden-tile" onclick="readClicks(event)" data-tile="incorrect" id="27"></div>
+                <div class="game-tile correct hidden-tile" onclick="readClicks(event)" data-tile="correct" id="28"></div>
+                <div class="game-tile correct hidden-tile" onclick="readClicks(event)" data-tile="correct" id="29"></div>
+                <div class="game-tile incorrect hidden-tile" onclick="readClicks(event)" data-tile="incorrect" id="30"></div>
+            </div>
+            <h1 id="game-score"></h1>
+        </div>
+        -->
+        <script src = "{{ url_for('static', filename='js/game.js') }}"></script>
+    </body>
 {% endblock %}
