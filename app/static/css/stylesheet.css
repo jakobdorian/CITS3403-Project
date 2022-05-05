@@ -80,10 +80,26 @@ head,body{
 span{
     display: inline-block;
     padding: 2.5%;
+    height: 130px;
+    width: 130px;
     margin-right: 1px;
     margin-bottom: 1px;
-    border: 2px solid black;
+    border: 2.5px solid black;
 }
+
+#button01, #button02 {
+    width: 25%;
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    color: black;
+    background-color: lightgrey;
+  
+    
+}
+
 
 
 /* dark theme */
@@ -91,25 +107,36 @@ span{
 =======
  /* @media (prefers-color-scheme: dark) { */
     body {
-        background: #6c29e7;
-        color: white;
+        /* background: #6c29e7; */
+        background: #2d394d;
+        /* color: white; */
+        color: lightgrey;
+        
 
     }
 
     .center, h1{
         text-align: center;
-        font-family: "Lucida Console", "Courier New", monospace;
+        /* font-family: "Lucida Console", "Courier New", monospace; */
+        font-family: 'Source Code Pro', monospace;
     } 
 
     a {
-        color: white !important;
+        /* color: white !important; */
+        color: lightgrey !important;
     }
 
     .navbar-default {
-        background: #28043b;
-        border-color: #4c4c4d;
-        color: white;
-        font-family: "Lucida Console", "Courier New", monospace;
+        background: #2d394d;
+        /* background: #ff7a90; */
+        /* background: #4a768d; */
+        /* border-color: #4c4c4d; */
+        border-color: #2d394d;
+        /* color: white; */
+        /* color: lightgrey; */
+
+        font-family: 'Source Code Pro', monospace;
+        /* font-family: "Lucida Console", "Courier New", monospace; */
 
     }
 
