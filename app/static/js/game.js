@@ -1,42 +1,3 @@
-/*
-let tiles = document.querySelectorAll('.game-tile');
-let normalTile, correctTile;
-let score = 0;
-
-// FUNCTION THAT READS IN CLICKS FROM USER
-function readClicks(e) {
-    // myFunction();
-    const currentClick = e.currentTarget;
-    let tileFlipped = null;
-
-    if(currentClick.className.includes('tileClicked')) {
-        return;
-    }
-    // console.log(currentClick.className);
-    currentClick.className = currentClick.className
-        .replace('hidden-tile', '')
-        .trim();
-    
-    currentClick.className += ' tileClicked';
-
-    // VERY SCUFFED
-    if(currentClick.className.includes('incorrect')) {
-    } else {
-        score++;
-    }
-
-    document.getElementById("game-score").innerHTML = "Score: " + score;
-    
-    // MARKS TILE WHEN CLICKED, SO THE USER CANNOT CLICK AGAIN
-    if(!tileFlipped) {
-        tileFlipped = currentClick;
-    } else if(tileFlipped) {
-        if(tileFlipped.getAttribute('data-tile') === currentClick.getAttribute('data-tile')) {
-        }
-    }
-}
-*/
-
 //initializing variable
 let counter1 =0;
 let counter2 =0;
@@ -67,9 +28,8 @@ function createfn(){
         }
     }
     // getting random pattern of answer and id array
-    var a  = shuffle(temp)
-    var pattern = a[0]
-    var ids = a[1]
+    var pattern  = shuffle(temp)
+    var ids = idGen()
     
 
     //creating results para
@@ -95,16 +55,22 @@ function createfn(){
     document.getElementsByTagName('body')[0].appendChild(z)
 }
 
+//function to generate ids as array
+function idGen(){
+    temp =[]
+    for (let i = 1; i<31; i++){
+        temp.push(i)
+    }
+    return temp
+}
+
 //function for randomizing puzzle
 function shuffle(array){
     final = [];
-    ids = [];
     
     //generate idList 
-    for (let i = 1; i < 31; i++){
-        ids.push(i)
-    }
-    
+    ids = idGen()
+
     //generating pattern
     for (let i = 0; i < 10; i ++){
         var item = array[Math.floor(Math.random()*array.length)];
@@ -112,7 +78,7 @@ function shuffle(array){
         array.splice(index,1)
         final.push(item);
     }
-    return [final, ids]
+    return final
 }
 
 
@@ -222,10 +188,11 @@ function fnCaller1(ans,ids){
 }
 
 //function to play again
-function fnCaller2(arr){
-    var temp  = shuffle(arr)
-    var newPattern = temp[0]
-    var ids = temp[1]
+function fnCaller2(ids){
+    
+    //creating temp array to splice for pattern
+    var temp = idGen()
+    var newPattern  = shuffle(temp)
 
     displayReset()
     setTimeout(function(){displayAnswer(newPattern);},1000)
