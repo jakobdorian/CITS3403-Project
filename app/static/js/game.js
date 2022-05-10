@@ -8,9 +8,10 @@ function createfn(){
     var temp = []
 
     //creating div for game
-    var element = document.createElement('div');
-    element.setAttribute('id','puzzle')
-    document.getElementsByTagName('body')[0].appendChild(element)
+    var element01 = document.createElement('div');
+    element01.setAttribute('id','puzzle')
+    document.getElementsByTagName('body')[0].appendChild(element01)
+
 
     //creating blank puzzle
     for (let i = 1; i < 31; i++){
@@ -21,16 +22,15 @@ function createfn(){
         var tile = document.createElement("span");
         tile.setAttribute('class','empty')
         tile.setAttribute('id', i)
-        element.appendChild(tile);
+        element01.appendChild(tile);
         if (i % 5 == 0){
             lineBreak = document.createElement('br');
-            element.appendChild(lineBreak);2
+            element01.appendChild(lineBreak);2
         }
     }
     // getting random pattern of answer and id array
     var pattern  = shuffle(temp)
     var ids = idGen()
-    
 
     //creating results para
     var para = document.createElement('p')
@@ -55,6 +55,43 @@ function createfn(){
     document.getElementsByTagName('body')[0].appendChild(z)
 }
 
+//function to generate resultsTab
+function genResultsTab(){
+    
+    //creating modal for results
+    var element01 = document.createElement('div');
+    element01.setAttribute('id', 'myModal')
+    element01.setAttribute('class', 'modal')
+    document.getElementsByTagName('body')[0].appendChild(element01)
+    
+    var element02 = document.createElement('div');
+    element02.setAttribute('id', 'modal_Content')
+    element02.setAttribute('class','modalContent')
+    document.getElementById('myModal').appendChild(element02)
+
+    var element03 = document.createElement('h2')
+    var text01 = document.createTextNode('Statistics')
+    element03.appendChild(text01)
+    document.getElementById('modal_Content').appendChild(element03)
+
+    var element04 = document.createElement('p')
+    var text02 = document.createTextNode('TESTING WOOOOO')
+    element04.appendChild(text02)
+    document.getElementById('modal_Content').appendChild(element04)
+
+    var element05 = document.createElement('span')
+    var text03 = document.createTextNode('X')
+    element05.appendChild(text03)
+    element05.setAttribute('class', 'close')
+    document.getElementById('modal_Content').appendChild(element05)
+
+    var element06 = document.createElement('button')
+    var text04 = document.createTextNode('Share')
+    element06.setAttribute('class', 'share')
+    element06.appendChild(text04)
+    document.getElementById('modal_Content').appendChild(element06)
+
+}
 //function to generate ids as array
 function idGen(){
     temp =[]
@@ -200,3 +237,4 @@ function fnCaller2(ids){
 }
 
 window.onload = createfn();
+window.onload = genResultsTab();
