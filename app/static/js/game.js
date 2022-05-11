@@ -54,7 +54,7 @@ function createfn(){
     z.hidden= true
     document.getElementsByTagName('body')[0].appendChild(z)
 }
-
+/*
 //function to generate resultsTab
 function genResultsTab(){
     
@@ -92,6 +92,8 @@ function genResultsTab(){
     document.getElementById('modal_Content').appendChild(element06)
 
 }
+*/
+
 //function to generate ids as array
 function idGen(){
     temp =[]
