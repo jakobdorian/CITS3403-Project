@@ -20,3 +20,8 @@ class User(UserMixin, db.Model):
     @login.user_loader
     def load_user(id):
         return User.query.get(int(id))
+
+class Score(UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_score = db.Column(db.Integer)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))

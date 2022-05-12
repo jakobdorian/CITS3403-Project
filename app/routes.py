@@ -7,10 +7,9 @@ from werkzeug.urls import url_parse
 from sqlalchemy import func, extract
 import sqlalchemy
 
-@app.route('/')
-@app.route('/index')
+@app.route('/home')
 def index():
-    return render_template('index.html', title = 'Home')
+    return render_template('home.html', title = 'Home')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -53,6 +52,11 @@ def user():
     if current_user.is_authenticated:
         return render_template('user.html', title='Profile')
 
+@app.route('/')
 @app.route('/game')
 def game():
     return render_template('game.html', title='Game')
+
+@app.route('/leaderboard', methods=['GET', 'POST'])
+def leaderboard():
+    return render_template('leaderboard.html', title='Leaderboard')

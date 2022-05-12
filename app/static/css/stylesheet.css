@@ -1,4 +1,4 @@
-/* body {
+ /* body {
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -15,16 +15,16 @@ p1 {
 
 p2 {
     font-size: large;
-}
+} */
 
 .center {
     text-align: center;
 }
 
-.topnav-right {
+/* .topnav-right {
     float: right;
-}
-*/
+} */
+
 
 .game-row {
     text-align: center;

@@ -31,9 +31,11 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-left">
                 {% if current_user.is_anonymous %}
-                <li><a href="{{ url_for('index') }}">Home</a></li>
                 <li><a href="{{ url_for('game') }}">Game</a></li>
+                <li><a href="{{ url_for('leaderboard') }}">Leaderboard</a></li>
                 {% else %} 
+                <li><a href="{{ url_for('game') }}">Game</a></li>
+                <li><a href="{{ url_for('leaderboard') }}">Leaderboard</a></li>
                 <li><a href="{{ url_for('user') }}">Profile</a></li>
                 {% endif %}
             </ul>
