@@ -21,10 +21,15 @@ p2 {
     text-align: center;
 }
 
+.center > ul {
+    display: inline-block;
+    list-style-type: square;
+    text-align: left;
+}
+
 /* .topnav-right {
     float: right;
 } */
-
 
 .game-row {
     text-align: center;
