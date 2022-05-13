@@ -148,3 +148,12 @@ span{
         color: #337ab7 !important;
     }
 
+#mystat-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+}
+
+#stats-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}

@@ -3,8 +3,20 @@
 {% block content %}
 <h1>Leaderboard</h1>
     <body>
-
-
+        <div id="stats-list">
+        <p> USER ID </p> <P> DATE </P> <p> USER SCORE </p> 
+        {% for score in scores %} 
+             <p> {{ score.user_id }} </p> <p>  {{ score.date }} </p> <p>  {{ score.user_score }} </p> 
+        {% endfor %} 
+    </div>
     </body>
 
 {% endblock %}
+
+<!-- TODO: HIGHLIGHT PROFILE USERS SCORES -->
+<!-- ORDER HIGHEST-LOWEST-->
+<!-- CHANGE USER_ID TO USER.USERNAME-->
+<!-- DATE SHOULDNT INCLUDE MINUTES-->
+<!-- CSS work use table-->
+
+

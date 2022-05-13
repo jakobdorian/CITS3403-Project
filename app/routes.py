@@ -1,7 +1,7 @@
 from app import app, db
 from app.forms import LoginForm, RegistrationForm
-from app.models import User
-from flask import Flask, render_template, flash, redirect, url_for, request
+from app.models import User, Score
+from flask import Flask, render_template, flash, redirect, url_for, request, session
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 from sqlalchemy import func, extract
@@ -22,6 +22,7 @@ def register():
         db.session.add(user)
         db.session.commit()
         flash('Congratulations, you are now a user!')
+        #CHANGE THIS TO GO STRAIGHT TO STATS PAGE
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
@@ -47,10 +48,27 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
-@app.route('/user')
-def user():
+@app.route('/user_stats')
+def user_stats():
     if current_user.is_authenticated:
-        return render_template('user.html', title='Profile')
+        user_id = current_user.id
+        #show list of stats associated with user IF logged in  
+        my_scores = Score.query.filter_by(user_id=user_id)
+        return render_template('user.html', user=my_scores)
+    return render_template('user.html', title='Profile')
+
+
+#DUMMY WAY TO ENTER STATS FOR TESTING TO BE DELETED
+@app.route('/register_stats', methods=['POST'])
+def register_stats():
+    form = request.form
+    scores = Score(
+        user_id= current_user.id,
+        user_score = form['score']
+    )
+    db.session.add(scores)
+    db.session.commit()
+    return redirect(url_for('user_stats'))
 
 @app.route('/')
 @app.route('/game')
@@ -59,4 +77,6 @@ def game():
 
 @app.route('/leaderboard', methods=['GET', 'POST'])
 def leaderboard():
-    return render_template('leaderboard.html', title='Leaderboard')
+    all_scores = Score.query.all()
+    return render_template('leaderboard.html', scores=all_scores)
+
