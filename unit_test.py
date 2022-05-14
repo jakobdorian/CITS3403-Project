@@ -10,11 +10,11 @@ class TestUserModel(unittest.TestCase):
         self.assertTrue(user.check_password('imatest'))
         self.assertFalse(user.check_password('iamNOTatest'))
     
-    def test_initialize_database(self):
+    def test_initialize_database(self): # TESTS CREATING A DATABASE
         app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://'
         db.create_all()
 
-    def test_drop_user(self):
+    def test_drop_user(self): # TESTS DROPPING ALL TABLES FOR A USER
         db.session.remove()
         db.drop_all()
 
