@@ -7,10 +7,12 @@ from werkzeug.urls import url_parse
 from sqlalchemy import func, extract
 import sqlalchemy
 
+#Homepage
 @app.route('/home')
 def index():
     return render_template('home.html', title = 'Home')
 
+#Register a user 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
@@ -22,10 +24,11 @@ def register():
         db.session.add(user)
         db.session.commit()
         flash('Congratulations, you are now a user!')
-        #CHANGE THIS TO GO STRAIGHT TO STATS PAGE
+        #CHANGE THIS TO GO STRAIGHT TO STATS PAGE should be logged in once registered?
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
+#If already a user login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -48,11 +51,12 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
+#Profile page displaying all of current users scores 
 @app.route('/user_stats')
 def user_stats():
     if current_user.is_authenticated:
-        user_id = current_user.id
-        #show list of stats associated with user IF logged in  
+        #get current users id and filter scores
+        user_id = current_user.id 
         my_scores = Score.query.filter_by(user_id=user_id)
         return render_template('user.html', user=my_scores)
     return render_template('user.html', title='Profile')
@@ -75,8 +79,9 @@ def register_stats():
 def game():
     return render_template('game.html', title='Game')
 
+#Display all scores within database Score table
 @app.route('/leaderboard', methods=['GET', 'POST'])
 def leaderboard():
-    all_scores = Score.query.all()
+    all_scores = Score.query.all() 
     return render_template('leaderboard.html', scores=all_scores)
 

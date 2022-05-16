@@ -1,5 +1,5 @@
 from app import db, login
-from datetime import datetime
+from datetime import date
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -27,6 +27,9 @@ class Score(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_score = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
-    #STRIP MINUTES OFF DATE, IMPLEMENT IF SAME DATE NEW COLUMN BUT EMPTY DATE
-    date = db.Column(db.DateTime(timezone=True), default=datetime.today)
+    #IMPLEMENT IF SAME DATE NEW COLUMN BUT EMPTY DATE
+    #NOT DATETIME OBJECT THUS NO TIMEZONE PROBLEM? 
+    today = date.today()
+    format_date = today.strftime("%b-%d-%Y") #strips minutes, formats the date eg May-16-2022
+    date = db.Column(db.String, default=format_date)
 

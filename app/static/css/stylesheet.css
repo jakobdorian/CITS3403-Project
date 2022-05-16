@@ -148,12 +148,27 @@ span{
         color: #337ab7 !important;
     }
 
-#mystat-list {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+/* TABLE STYLING */
+table {
+    border-collapse: separate;
+   
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+th, td {
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    border-top: 1px solid white;
+    padding: 15px;
+    text-align: center;
+    margin: none;
 }
 
-#stats-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+th {
+    border-top: none;
+    font-weight: bold;
+    background-color: rgba(15, 34, 101, 0.359);
 }
+

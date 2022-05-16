@@ -17,10 +17,21 @@
        <input type="submit">
    </form>
    <br><br>
-<div id="mystat-list"> <!--MAKE INTO NICER TABLE-->
-        <p> Date </p> <p> Score </p>
+
+<table id="'mystats-list"> <!--TODO: IF NO SCORES YET, LINK TO GAME-->
+    <thead>
+        <tr>
+            <th> DATE </th>
+            <th> SCORE </th>
+        </tr>
+    </thead> 
+    <tbody>
         {% for user in user %} 
-            <p> {{ user.date }} </p> <p>  {{ user.user_score }} </p> 
+            <tr>
+                <td> {{ user.date }} </td>
+                <td> {{ user.user_score }} </td>
+            </tr>
         {% endfor %} 
-    </div>
+    </tbody>
+</table>
 {% endblock %} 
