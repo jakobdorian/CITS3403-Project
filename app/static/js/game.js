@@ -1,6 +1,22 @@
-//initializing variable
+//initializing variables
 let counter1 =0;
 let counter2 =0;
+let gameCount = 0;
+
+//variables for sharing results
+//scores for 3 diff games
+let score1 = 0;
+let score2 = 0;
+let score3 = 0;
+
+//breakdown of scores for 3 games
+let G1C1 = 0;
+let G1C2 = 0;
+let G2C1 = 0;
+let G2C2 = 0;
+let G3C1 = 0;
+let G3C2 = 0;
+
 
 // function to generate model of game
 function createfn(){
@@ -11,7 +27,6 @@ function createfn(){
     var element01 = document.createElement('div');
     element01.setAttribute('id','puzzle')
     document.getElementsByTagName('body')[0].appendChild(element01)
-
 
     //creating blank puzzle
     for (let i = 1; i < 31; i++){
@@ -54,46 +69,6 @@ function createfn(){
     z.hidden= true
     document.getElementsByTagName('body')[0].appendChild(z)
 }
-/*
-//function to generate resultsTab
-function genResultsTab(){
-    
-    //creating modal for results
-    var element01 = document.createElement('div');
-    element01.setAttribute('id', 'myModal')
-    element01.setAttribute('class', 'modal')
-    document.getElementsByTagName('body')[0].appendChild(element01)
-    
-    var element02 = document.createElement('div');
-    element02.setAttribute('id', 'modal_Content')
-    element02.setAttribute('class','modalContent')
-    document.getElementById('myModal').appendChild(element02)
-
-    var element03 = document.createElement('h2')
-    var text01 = document.createTextNode('Statistics')
-    element03.appendChild(text01)
-    document.getElementById('modal_Content').appendChild(element03)
-
-    var element04 = document.createElement('p')
-    var text02 = document.createTextNode('TESTING WOOOOO')
-    element04.appendChild(text02)
-    document.getElementById('modal_Content').appendChild(element04)
-
-    var element05 = document.createElement('span')
-    var text03 = document.createTextNode('X')
-    element05.appendChild(text03)
-    element05.setAttribute('class', 'close')
-    document.getElementById('modal_Content').appendChild(element05)
-
-    var element06 = document.createElement('button')
-    var text04 = document.createTextNode('Share')
-    element06.setAttribute('class', 'share')
-    element06.appendChild(text04)
-    document.getElementById('modal_Content').appendChild(element06)
-
-}
-*/
-
 //function to generate ids as array
 function idGen(){
     temp =[]
@@ -123,7 +98,6 @@ function shuffle(array){
 
 function checker(arr1,arr2,id){
     var x = parseInt(id)
-
     if (arr2.includes(x)){
         elem = document.getElementById(id)
         elem.setAttribute('class', 'answer');
@@ -138,21 +112,78 @@ function checker(arr1,arr2,id){
     }
 
     //ending game if 6 wrong selections / 10 correct selections
+
+    var correctEmoji = String.fromCodePoint(0x1F7E6);
+    var wrongEmoji = String.fromCodePoint(0x1F7E5);
+
     if (counter2 == 6 || counter1 ==10){
+        gameCount ++; 
         document.getElementById('button02').hidden =false;
         displayLock()
         var score = calculateRes()
         revealAnswer(arr2)
 
-        if (counter2==6){
-            var results = "Sorry you ran out of tries, the remaining tiles are shown in green! You scored a total of " + score + "!"
-            var p1 = document.createTextNode(results)
-            document.getElementById('resultsText').appendChild(p1)
+        //Revealing the results 
+        $('#myModal').modal('toggle');
+        $('#myModal').modal('show');
+
+        var results1 = counter1 + correctEmoji + counter2 + wrongEmoji
+        var results2 = 'Total:' + score
+
+        document.getElementById('res0'+ gameCount.toString()+'a').textContent = results1
+        document.getElementById('res0'+ gameCount.toString()+'a').style.fontStyle = 'normal'
+
+        document.getElementById('res0'+ gameCount.toString()+'b').textContent = results2
+        document.getElementById('res0'+ gameCount.toString()+'b').style.fontStyle = 'normal'
+
+        if (gameCount == 1){
+            score1 = score
+            G1C1 = counter1
+            G1C2 = counter2
         }
-        else if (counter1 ==10){
-            var results = "Congratulations! You completed the game! You scored a total of " + score + "!"
-            var p1 = document.createTextNode(results)
-            document.getElementById('resultsText').appendChild(p1)
+        else if (gameCount ==2){
+            score2 = score
+            G2C1 = counter1
+            G2C2 = counter2
+        }
+        else{
+            G3C1 = counter1
+            G3C2 = counter2
+
+            //locking any further attempts
+            document.getElementById('button02').hidden = true;
+
+            //generating summary 
+            var final1 = document.createElement('p')
+            var final1a = document.createTextNode('Come Back Tomorrow to Try Again!')
+            final1.appendChild(final1a)
+            document.getElementById('summary').appendChild(final1);
+
+            //calculating final score
+            score3 = score
+            var sum = ''
+            sum = Number(score1) + Number(score2) + Number(score3)
+            finalScore = (sum/3).toFixed(1)
+            if (finalScore == 0.0){
+                finalScore = 0
+            }
+            finalRes = 'Final Score: ' + finalScore
+            
+            var final2 = document.createElement('p')
+            var final2a = document.createTextNode(finalRes)
+            final2.appendChild(final2a)
+            document.getElementById('summary').appendChild(final2)
+
+            //creating share button
+            footer = document.getElementById('footer')
+            var a = document.createElement('button')
+            var b = document.createTextNode('SHARE')
+            a.appendChild(b)
+            a.setAttribute('id','button03')
+            a.setAttribute('class','btn btn-default')
+            a.onclick = function(){shareRes(score1, G1C1, G1C2, score2, G2C1, G2C2, score3, G3C1, G3C2, finalScore);}
+            footer.appendChild(a)
+
         }
     }
 }
