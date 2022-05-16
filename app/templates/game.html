@@ -3,31 +3,54 @@
 {% block content %}
 <h1>Prototype</h1>
 <br>
-    <body>
-        <script src = "{{ url_for('static', filename='js/game.js') }}"></script>
-    </body>
-
-    <div class="container">
-        <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Small Modal</button>
-      
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" role="dialog">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Statistics</h4>
-                </div>
-                <div class="modal-body">
-                    <p>Loremipsum</p>
-                </div>
-                <div class="modal-footer">
-                    <button onclick = "copyRes()" class ="btn btn-default"> Share</button>  
-                 </div>
+<body>
+  <script src = "{{ url_for('static', filename='js/game.js') }}"></script>
+    
+  <div class="container">
+    <h2>Modal Example</h2>
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Your Results</button>
+  
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">RESULTS</h4>
+          </div>
+          <div class="modal-body" id = "resultsBlk">
+            <div class = 'resultsArea' id = 'resultsArea1'>
+              <p> GAME01: </p>
+              <p> GAME02: </p>
+              <p> GAME03: </p>
+            </div>
+            <div class = 'resultsArea' id = 'resultsArea2'>
+              <p id = 'res01a'> Play Game to Obtain Score </p>
+              <p id = 'res02a'> Play Game to Obtain Score </p>
+              <p id = 'res03a'> Play Game to Obtain Score </p>
+            </div>
+            <div class = 'resultsArea' id = 'resultsArea3'>
+              <p id = 'res01b'></p>
+              <p id = 'res02b'></p>
+              <p id = 'res03b'></p>
             </div>
           </div>
+          <div class = 'summaryRes' id = 'summary'>
+          </div>
+          <div class="modal-footer" id = 'footer'>
+            <!--<button type="button" class="btn btn-default">SHARE</button>-->
+          </div>
         </div>
+        
       </div>
+    </div>
+    
+  </div>
+  
+</body>
+
+
       
 {% endblock %}
