@@ -1,4 +1,5 @@
 from app import db, login
+from datetime import datetime
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -7,6 +8,7 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
+    user_stats = db.relationship('Score', backref='user', lazy=True)
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -25,3 +27,6 @@ class Score(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_score = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    #STRIP MINUTES OFF DATE, IMPLEMENT IF SAME DATE NEW COLUMN BUT EMPTY DATE
+    date = db.Column(db.DateTime(timezone=True), default=datetime.today)
+
