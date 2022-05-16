@@ -78,5 +78,6 @@ def game():
 @app.route('/leaderboard', methods=['GET', 'POST'])
 def leaderboard():
     all_scores = Score.query.all()
-    return render_template('leaderboard.html', scores=all_scores)
+    user = User.query.all()
+    return render_template('leaderboard.html', scores=all_scores, user=user)
 
