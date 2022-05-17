@@ -41,5 +41,5 @@ class TestingMigrate(db.Model):
 class Puzzle(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     puzzle01 = db.Column(db.String)
-    #puzzle02 = db.Column(db.String)
-    #puzzle03 = db.Column(db.String)
+    puzzle02 = db.Column(db.String)
+    puzzle03 = db.Column(db.String)
