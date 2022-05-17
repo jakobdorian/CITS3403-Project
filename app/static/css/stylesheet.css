@@ -171,3 +171,34 @@ th {
     font-weight: bold;
     background-color: rgba(15, 34, 101, 0.359);
 }
+
+/* Modal Things */
+h4{
+    color: black;
+    font-size: 40px;
+}
+
+#tdyDate{
+    float:left;
+}
+.resultsArea {
+    color: black;
+    text-align: center;
+    width: 33%;
+    float:left;
+    padding: 1%;
+    height: 30%
+}
+
+#resultsArea2{
+    font-style: italic;
+}
+
+.modal-body:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.summaryRes {
+    color: black;
+}
