@@ -171,3 +171,8 @@ th {
     font-weight: bold;
     background-color: rgba(15, 34, 101, 0.359);
 }
+
+.clickable {
+    cursor: pointer;
+    background-color:purple;
+}

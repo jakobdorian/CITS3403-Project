@@ -32,3 +32,7 @@ class Score(UserMixin, db.Model):
     format_date = today.strftime("%b-%d-%Y") #strips minutes, formats the date eg May-16-2022
     date = db.Column(db.String, default=format_date)
 
+class TestingMigrate(db.Model):
+        id = db.Column(db.Integer, primary_key=True)
+        test_one = db.Column(db.Integer)
+        test_two = db.Column(db.Integer)

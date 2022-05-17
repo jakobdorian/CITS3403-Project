@@ -1,15 +1,5 @@
-// const tiles = document.querySelectorAll('.game-tile');
-// function readClicks(event) {
-//     myFunction();
-// }
+$(function() {
+  alert('here')
+  $("#myTable").tablesorter();
+});
 
-// // tiles.forEach(tile => tile.addEventListener('click', readClicks()));
-
-// function myFunction() {
-//     console.log("working!");
-//     console.log(this);
-    
-// }
-
-
-// tiles.forEach(tile => tile.addEventListener('click', myFunction));

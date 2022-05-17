@@ -5,7 +5,7 @@ from flask import Flask, render_template, flash, redirect, url_for, request, ses
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 from sqlalchemy import func, extract
-import sqlalchemy
+
 
 @app.route('/home')
 def index():
