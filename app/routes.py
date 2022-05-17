@@ -1,6 +1,6 @@
 from app import app, db
 from app.forms import LoginForm, RegistrationForm
-from app.models import User, Score
+from app.models import User, Score, Puzzle
 from flask import Flask, render_template, flash, redirect, url_for, request, session
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
@@ -81,3 +81,14 @@ def leaderboard():
     user = User.query.all()
     return render_template('leaderboard.html', scores=all_scores, user=user)
 
+#db testing
+@app.route('/update_puzzle/', methods = ['post'])
+def update():
+    '''    temp = []
+    for x in range(30):
+        temp.append(x)
+    print(temp)
+    '''
+    puzzle = Puzzle(puzzle01 = 'a')
+    db.session.add(puzzle)
+    db.session.commit()
