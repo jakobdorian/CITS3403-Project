@@ -1,10 +1,13 @@
+from ftplib import B_CRLF
+import json
 from app import app, db
 from app.forms import LoginForm, RegistrationForm
-from app.models import User, Score
+from app.models import User, Score, Puzzle
 from flask import Flask, render_template, flash, redirect, url_for, request, session
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 from sqlalchemy import func, extract
+import random
 
 
 @app.route('/home')
@@ -81,3 +84,26 @@ def leaderboard():
     user = User.query.all()
     return render_template('leaderboard.html', scores=all_scores, user=user)
 
+#db testing
+@app.route('/update_puzzle/', methods = ['post'])
+def update():
+    temp = []
+    for i in range(30):
+        temp.append(i)
+        
+    a = random.sample(temp,10)
+    b = random.sample(temp,10)
+    c = random.sample(temp,10)
+    
+    x = json.dumps(a)
+    y = json.dumps(b)
+    z = json.dumps(c)
+    
+    puzzle = Puzzle(puzzle01 = x, puzzle02 = y, puzzle03 = z)
+    db.session.add(puzzle)
+    db.session.commit()
+
+@app.route('/game', methods=['GET', 'POST'])
+def results():
+    all_scores = Puzzle.query.all()
+    return render_template('game.html', scores=all_scores)

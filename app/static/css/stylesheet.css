@@ -175,6 +175,8 @@ th {
 .clickable {
     cursor: pointer;
     background-color:purple;
+}
+
 /* Modal Things */
 h4{
     color: black;

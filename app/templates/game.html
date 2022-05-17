@@ -48,7 +48,29 @@
     </div>
     
   </div>
-  
+  <!-- MORE TESTING-->
+  <form action = "/update_puzzle/", methods = "post">
+    <button type = 'button' type ='submit'> IDK WHAT IM DOING </button>
+  </form>  
+  <table >
+    <thead>
+        <tr>
+            <th> Puzzle01 </th>
+            <th> Puzzle02 </th>
+            <th> Puzzle03 </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for score in scores %} 
+            <tr>
+                <td> {{ score.puzzle01 }} </td>
+                <td> {{ score.puzzle02 }} </td>
+                <td> {{ score.puzzle03 }}</td>
+            </tr>
+        {% endfor %} 
+    </tbody>
+</table>
+
 </body>
 
 

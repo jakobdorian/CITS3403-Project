@@ -36,3 +36,10 @@ class TestingMigrate(db.Model):
         id = db.Column(db.Integer, primary_key=True)
         test_one = db.Column(db.Integer)
         test_two = db.Column(db.Integer)
+        
+        
+class Puzzle(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    puzzle01 = db.Column(db.String)
+    puzzle02 = db.Column(db.String)
+    puzzle03 = db.Column(db.String)
