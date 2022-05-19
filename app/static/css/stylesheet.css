@@ -54,9 +54,7 @@ span{
         /* background: #6c29e7; */
         background: #2d394d;
         /* color: white; */
-        color: lightgrey;
-        
-
+        color: lightgrey;       
     }
 
     .center, h1{
@@ -65,6 +63,12 @@ span{
         font-family: 'Source Code Pro', monospace;
     } 
 
+    ul{
+        display: inline-block;
+        text-align: left;
+        list-style-type: square;
+    }
+
     a {
         /* color: white !important; */
         color: lightgrey !important;
@@ -72,7 +76,7 @@ span{
 
     .navbar-default {
         background: #2d394d;
-        border-color: #323f56;
+        border-color: #566d95;
 
         font-family: 'Source Code Pro', monospace;
     }
