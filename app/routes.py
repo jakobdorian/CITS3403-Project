@@ -100,7 +100,7 @@ def game():
 def leaderboard():
     all_scores = Score.query.all()
     user = User.query.all()
-    return render_template('leaderboard.html', scores=all_scores, user=user)
+    return render_template('leaderboard.html', title='Leaderboard', scores=all_scores, user=user)
 
 #db testing
 @app.route('/update_puzzle/', methods = ['post'])
