@@ -35,6 +35,19 @@ span{
     border: 5px solid #232d3c;
 }
 
+/* makes tiles smaller when viewing on a mobile device */
+@media (max-width: 1000px){
+    span{
+        display: inline-block;
+        padding: 2.5%;
+        height: 65px;
+        width: 65px;
+        margin-right: 1px;
+        margin-bottom: 1px;
+        border: 5px solid #232d3c;
+    }
+}
+
 #button01, #button02 {
     width: 25%;
     border: none;
@@ -44,8 +57,6 @@ span{
     text-align: center;
     color: black;
     background-color: lightgrey;
-  
-    
 }
 
 
