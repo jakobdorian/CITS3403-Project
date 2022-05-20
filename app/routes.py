@@ -61,15 +61,11 @@ def user_stats():
     return render_template('user.html', title='Profile')
 
 
-#register statistics into thes
+#Register score into the database
 @app.route('/register_stats', methods=['POST'])
 def register_stats(): 
     output = request.get_json()
     finalscore = json.loads(output)
-    print('USER SCORE RECIEVED')
-    print('-------------------------')
-    print('final score = ', finalscore)
-    print('type of final score= ', type(finalscore))
     scores = Score(
         user_id= current_user.id,
         user_score = float(finalscore)
@@ -77,19 +73,6 @@ def register_stats():
     db.session.add(scores)
     db.session.commit()
     return redirect(url_for('user_stats'))
-
-
-
-@app.route('/register_score/<string:userscore>', methods=['POST'])
-def register_score():
-    userscore = json.loads(userscore)
-    print()
-    print('USER SCORE RECIEVED')
-    print('-------------------------')
-    print(userscore)
-    return 'Score recieved successfully'
-
-
 
 @app.route('/')
 @app.route('/game')
@@ -100,6 +83,10 @@ def game():
 def leaderboard():
     all_scores = Score.query.all()
     user = User.query.all()
+    if current_user.is_authenticated:
+        user_id = current_user.id
+    
+    
     return render_template('leaderboard.html', title='Leaderboard', scores=all_scores, user=user)
 
 #db testing
