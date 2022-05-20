@@ -61,17 +61,35 @@ def user_stats():
     return render_template('user.html', title='Profile')
 
 
-#DUMMY WAY TO ENTER STATS FOR TESTING TO BE DELETED
+#register statistics into thes
 @app.route('/register_stats', methods=['POST'])
-def register_stats():
-    form = request.form
+def register_stats(): 
+    output = request.get_json()
+    finalscore = json.loads(output)
+    print('USER SCORE RECIEVED')
+    print('-------------------------')
+    print('final score = ', finalscore)
+    print('type of final score= ', type(finalscore))
     scores = Score(
         user_id= current_user.id,
-        user_score = form['score']
+        user_score = float(finalscore)
     )
     db.session.add(scores)
     db.session.commit()
     return redirect(url_for('user_stats'))
+
+
+
+@app.route('/register_score/<string:userscore>', methods=['POST'])
+def register_score():
+    userscore = json.loads(userscore)
+    print()
+    print('USER SCORE RECIEVED')
+    print('-------------------------')
+    print(userscore)
+    return 'Score recieved successfully'
+
+
 
 @app.route('/')
 @app.route('/game')

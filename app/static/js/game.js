@@ -18,9 +18,9 @@ let G3C1 = 0;
 let G3C2 = 0;
 
 
+
 // function to generate model of game
 function createfn(){
-
     var temp = []
 
     //creating div for game
@@ -168,6 +168,18 @@ function checker(arr1,arr2,id){
                 finalScore = 0
             }
             finalRes = 'Final Score: ' + finalScore
+
+
+
+            //send final result to routes to be included in leaderboards
+            const sendscore= JSON.stringify(finalScore) //Stringify converts a JS value to JSON
+            window.alert(sendscore)
+            $.ajax({
+                url:"/register_stats",
+                type:"POST",
+                contentType: "application/json",
+                data: JSON.stringify(sendscore)              
+            });
             
             var final2 = document.createElement('p')
             var final2a = document.createTextNode(finalRes)

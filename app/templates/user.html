@@ -1,22 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>{{ current_user.username }} </h1>
-    <div class = "center">
-        <p1>This is the user page.</p1> <br>
-        <p2>More to come soon...</p2>
-    </div>
+    <h1>{{ current_user.username }}'s scores! </h1>
 
-<!-- INPUTTING STATS FOR TESTING, LOAD IN ELSEWHERE LATER-->
-<br>
-<form name="dummy-stat-form" action="{{ url_for('register_stats') }}" method="post">
-    <!--  <label> Date </label>
-       <input name="date" type="text" not required> -->
-       <label> TESTING DB INPUT FOR SCORES <br> Score </label>
-       <input name="score" type="integer" required> 
-       <input type="submit">
-   </form>
-   <br><br>
+
 
    <!--TODO: IF NO SCORES YET, LINK TO GAME-->
    <table id="myTable" class="tablesorter"> 
