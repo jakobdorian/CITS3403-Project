@@ -93,14 +93,19 @@ def leaderboard():
 #db testing
 @app.route('/update_puzzle', methods = ['post'])
 def update():
-    temp = request.get_json()
-    print(temp)
+    temp01 = request.get_json()
+    temp02 = json.loads(temp01)
+    
+    pattern01 = json.dumps(temp02[0])
+    pattern02 = json.dumps(temp02[1])
+    pattern03 = json.dumps(temp02[2])
+    
     puzzle = Puzzle(
-        puzzle01 = temp,
-        puzzle02 = temp,
-        puzzle03 = temp
-        
+        puzzle01 = pattern01,
+        puzzle02 = pattern02,
+        puzzle03 = pattern03        
     )
+    
     db.session.add(puzzle)
     db.session.commit()
     return  render_template('game.html', title = 'Game')
@@ -115,7 +120,8 @@ def results():
 def admin():
     id = current_user.id
     if id == 4:
-        return render_template('admin.html', title='Admin')
+        all_puzzles = Puzzle.query.all()
+        return render_template('admin.html', title='Admin', puzzles = all_puzzles)
     else:
         flash("You are not authorized to access this page")
         return redirect(url_for('index'))

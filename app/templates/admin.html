@@ -1,6 +1,31 @@
 {% extends "base.html" %}
 
 {% block content %}
+<body>
+    <script src = "{{ url_for('static', filename='js/admin.js') }}"></script>
     <h1>Admin</h1>
-    
+    <form action = "/update_puzzle", methods = "post">
+        <button id = 'addData' type = 'button' type ='submit' onclick ='insertPattern()'> Add Patterns </button>
+      </form>  
+      <table >
+        <thead>
+            <tr>
+                <th> Row </th>
+                <th> Pattern 01 </th>
+                <th> Pattern 02 </th>
+                <th> Pattern 03 </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for puzzle in puzzles %} 
+                <tr>
+                    <td> {{ puzzle.id }} </td>
+                    <td> {{ puzzle.puzzle01 }} </td>
+                    <td> {{ puzzle.puzzle02 }} </td>
+                    <td> {{ puzzle.puzzle03 }}</td>
+                </tr>
+            {% endfor %} 
+        </tbody>
+    </table>
+</body>
 {% endblock %}
