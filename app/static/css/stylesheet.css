@@ -113,15 +113,10 @@ table {
     margin-right: auto;
     margin-top: 30px;
 }
-
-tr {
-   background-color: #2d394d;
- } .initial { background-color: #2d394d }
- .normal { background-color: #2d394d }
- .highlight { background-color: rgb(62, 21, 152) }
-
 th, td {
-
+    /* border-left: 1px solid white;
+    border-right: 1px solid white;
+    border-top: 1px solid white; */
     border: 5px solid #202a3b;
     padding: 15px;
     text-align: center;
@@ -131,10 +126,14 @@ th, td {
 th {
     border-top: none;
     font-weight: bold;
+    /* background-color: rgba(15, 34, 101, 0.359); */
     background-color: #202a3b;
 }
 
-
+.clickable {
+    cursor: pointer;
+    background-color:purple;
+}
 
 /* Modal Things */
 h4{
