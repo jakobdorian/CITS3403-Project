@@ -104,9 +104,14 @@ def update():
     y = json.dumps(b)
     z = json.dumps(c)
     
-    puzzle = Puzzle(puzzle01 = x, puzzle02 = y, puzzle03 = z)
+    puzzle = Puzzle(
+        puzzle01 = x, 
+        puzzle02 = y,
+        puzzle03 = z
+        )
     db.session.add(puzzle)
     db.session.commit()
+    return  render_template('game.html', title = 'Game')
 
 @app.route('/game', methods=['GET', 'POST'])
 def results():
