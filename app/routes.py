@@ -109,3 +109,13 @@ def update():
 def results():
     all_scores = Puzzle.query.all()
     return render_template('game.html', scores=all_scores)
+
+@app.route('/admin')
+@login_required
+def admin():
+    id = current_user.id
+    if id == 4:
+        return render_template('admin.html', title='Admin')
+    else:
+        flash("You are not authorized to access this page")
+        return redirect(url_for('index'))
