@@ -77,7 +77,8 @@ def register_stats():
 @app.route('/')
 @app.route('/game')
 def game():
-    return render_template('game.html', title='Game')
+    allPuzzles = Puzzle.query.all()
+    return render_template('game.html', title='Game', puzzles = allPuzzles)
 
 @app.route('/leaderboard', methods=['GET', 'POST'])
 def leaderboard():
@@ -89,23 +90,29 @@ def leaderboard():
 #Db testing
 @app.route('/update_puzzle/', methods = ['post'])
 def update():
-    temp = []
-    for i in range(30):
-        temp.append(i)
+    temp = request.get_json()
+    print(temp)
+    puzzle = Puzzle(
+        puzzle01 = temp,
+        puzzle02 = temp,
+        puzzle03 = temp
         
-    a = random.sample(temp,10)
-    b = random.sample(temp,10)
-    c = random.sample(temp,10)
-    
-    x = json.dumps(a)
-    y = json.dumps(b)
-    z = json.dumps(c)
-    
-    puzzle = Puzzle(puzzle01 = x, puzzle02 = y, puzzle03 = z)
+    )
     db.session.add(puzzle)
     db.session.commit()
+    return  render_template('game.html', title = 'Game')
 
-@app.route('/game', methods=['GET', 'POST'])
+@app.route('/register_game', methods=['GET', 'POST'])
 def results():
     all_scores = Puzzle.query.all()
     return render_template('game.html', scores=all_scores)
+
+@app.route('/admin')
+@login_required
+def admin():
+    id = current_user.id
+    if id == 4:
+        return render_template('admin.html', title='Admin')
+    else:
+        flash("You are not authorized to access this page")
+        return redirect(url_for('index'))
