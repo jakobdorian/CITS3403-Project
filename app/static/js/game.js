@@ -17,6 +17,7 @@ let G2C2 = 0;
 let G3C1 = 0;
 let G3C2 = 0;
 
+var patternTest = null;
 
 
 // function to generate model of game
@@ -27,6 +28,9 @@ function createfn(){
     var element01 = document.createElement('div');
     element01.setAttribute('id','puzzle')
     document.getElementsByTagName('body')[0].appendChild(element01)
+    
+
+    //document.getElementById('testing01').addEventListener(onclick, testBackend)
 
     //creating blank puzzle
     for (let i = 1; i < 31; i++){
@@ -45,6 +49,7 @@ function createfn(){
     }
     // getting random pattern of answer and id array
     var pattern  = shuffle(temp)
+    patternTest = pattern
     var ids = idGen()
 
     //creating results para
@@ -80,6 +85,7 @@ function idGen(){
 
 //function for randomizing puzzle
 function shuffle(array){
+
     final = [];
     
     //generate idList 
@@ -276,6 +282,8 @@ function fnCaller2(ids){
     var temp = idGen()
     var newPattern  = shuffle(temp)
 
+
+
     displayReset()
     setTimeout(function(){displayAnswer(newPattern);},1000)
     setTimeout(function(){hideAnswer(ids,newPattern);},2000)
@@ -290,8 +298,6 @@ function shareRes(res1, res1a, res1b, res2, res2a, res2b, res3, res3a, res3b, re
     var yyyy = today.getFullYear();
 
     today = mm + '/' + dd 
-    console.log(today)
-    console.log(res1,res2,res3,resFinal)
 
     var correctEmoji = String.fromCodePoint(0x1F7E6);
     var wrongEmoji = String.fromCodePoint(0x1F7E5);
@@ -315,4 +321,17 @@ function shareRes(res1, res1a, res1b, res2, res2a, res2b, res3, res3a, res3b, re
 
 }
 
+function testBackend(){
+    //TESTING 
+    console.log("Hello world")
+    const sendPuzzle= JSON.stringify(patternTest) //Stringify converts a JS value to JSON
+    window.alert(sendPuzzle)
+    $.ajax({
+        url:"/update_puzzle",
+        type:"POST",
+        contentType: "application/json",
+        data: JSON.stringify(sendPuzzle)              
+    });
+    
+}
 window.onload = createfn();

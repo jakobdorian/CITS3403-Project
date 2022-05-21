@@ -49,8 +49,8 @@
     
   </div>
   <!-- MORE TESTING-->
-  <form action = "/update_puzzle/", methods = "post">
-    <button type = 'button' type ='submit'> IDK WHAT IM DOING </button>
+  <form action = "/update_puzzle", methods = "post">
+    <button id = "testing01" type = 'button' type ='submit' onclick ="testBackend()"> IDK WHAT IM DOING </button>
   </form>  
   <table >
     <thead>
@@ -61,11 +61,11 @@
         </tr>
     </thead>
     <tbody>
-        {% for score in scores %} 
+        {% for puzzle in puzzles %} 
             <tr>
-                <td> {{ score.puzzle01 }} </td>
-                <td> {{ score.puzzle02 }} </td>
-                <td> {{ score.puzzle03 }}</td>
+                <td> {{ puzzle.puzzle01 }} </td>
+                <td> {{ puzzle.puzzle02 }} </td>
+                <td> {{ puzzle.puzzle03 }}</td>
             </tr>
         {% endfor %} 
     </tbody>

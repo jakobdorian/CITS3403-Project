@@ -77,7 +77,8 @@ def register_stats():
 @app.route('/')
 @app.route('/game')
 def game():
-    return render_template('game.html', title='Game')
+    allPuzzles = Puzzle.query.all()
+    return render_template('game.html', title='Game', puzzles = allPuzzles)
 
 @app.route('/leaderboard', methods=['GET', 'POST'])
 def leaderboard():
@@ -90,30 +91,21 @@ def leaderboard():
     return render_template('leaderboard.html', title='Leaderboard', scores=all_scores, user=user)
 
 #db testing
-@app.route('/update_puzzle/', methods = ['post'])
+@app.route('/update_puzzle', methods = ['post'])
 def update():
-    temp = []
-    for i in range(30):
-        temp.append(i)
-        
-    a = random.sample(temp,10)
-    b = random.sample(temp,10)
-    c = random.sample(temp,10)
-    
-    x = json.dumps(a)
-    y = json.dumps(b)
-    z = json.dumps(c)
-    
+    temp = request.get_json()
+    print(temp)
     puzzle = Puzzle(
-        puzzle01 = x, 
-        puzzle02 = y,
-        puzzle03 = z
-        )
+        puzzle01 = temp,
+        puzzle02 = temp,
+        puzzle03 = temp
+        
+    )
     db.session.add(puzzle)
     db.session.commit()
     return  render_template('game.html', title = 'Game')
 
-@app.route('/game', methods=['GET', 'POST'])
+@app.route('/register_game', methods=['GET', 'POST'])
 def results():
     all_scores = Puzzle.query.all()
     return render_template('game.html', scores=all_scores)
