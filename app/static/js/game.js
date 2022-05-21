@@ -202,6 +202,8 @@ function checker(arr1,arr2,id){
             a.onclick = function(){shareRes(score1, G1C1, G1C2, score2, G2C1, G2C2, score3, G3C1, G3C2, finalScore);}
             footer.appendChild(a)
 
+
+
         }
     }
 }
@@ -321,17 +323,4 @@ function shareRes(res1, res1a, res1b, res2, res2a, res2b, res3, res3a, res3b, re
 
 }
 
-function testBackend(){
-    //TESTING 
-    console.log("Hello world")
-    const sendPuzzle= JSON.stringify(patternTest) //Stringify converts a JS value to JSON
-    window.alert(sendPuzzle)
-    $.ajax({
-        url:"/update_puzzle",
-        type:"POST",
-        contentType: "application/json",
-        data: JSON.stringify(sendPuzzle)              
-    });
-    
-}
 window.onload = createfn();
