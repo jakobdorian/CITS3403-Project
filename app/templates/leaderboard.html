@@ -5,7 +5,7 @@
 
 <h1>Leaderboard</h1>
    
-
+    <p> TESTING FOR LOGGED IN ID HERE: {{ current_user.username }} </p>
     <!-- LEADERBOARD TABLE -->
     <table id="myTable" class="tablesorter">
         <thead>
@@ -17,7 +17,9 @@
         </thead>
         <tbody>
             {% for score in scores %} 
-                <tr>
+                <tr class = "initial" id="myusername"
+                        onmouseover="this.className='highlight'", 
+                        onmouseout="this.className='normal'" >
                     <td> {{ score.user.username }} </td>
                     <td> {{ score.date }} </td>
                     <td> {{ score.user_score }}</td>

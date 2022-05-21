@@ -6,7 +6,7 @@
 
 
    <!--TODO: IF NO SCORES YET, LINK TO GAME-->
-   <table id="myTable" class="tablesorter"> 
+   <table class="tablesorter"> 
     <thead>
         <tr>
             <th> DATE </th>
@@ -15,7 +15,9 @@
     </thead> 
     <tbody>
         {% for user in user %} 
-            <tr>
+            <tr class = "initial" 
+            onmouseover="this.className='highlight'", 
+            onmouseout="this.className='normal'" >
                 <td> {{ user.date }} </td>
                 <td> {{ user.user_score }} </td>
             </tr>
