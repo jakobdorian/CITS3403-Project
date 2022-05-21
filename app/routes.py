@@ -83,15 +83,12 @@ def game():
 @app.route('/leaderboard', methods=['GET', 'POST'])
 def leaderboard():
     all_scores = Score.query.all()
-    user = User.query.all()
     if current_user.is_authenticated:
-        user_id = current_user.id
-    
-    
-    return render_template('leaderboard.html', title='Leaderboard', scores=all_scores, user=user)
+        logged_inid = current_user.id
+    return render_template('leaderboard.html', title='Leaderboard', scores=all_scores)
 
-#db testing
-@app.route('/update_puzzle', methods = ['post'])
+#Db testing
+@app.route('/update_puzzle/', methods = ['post'])
 def update():
     temp01 = request.get_json()
     temp02 = json.loads(temp01)
