@@ -107,6 +107,8 @@ table {
     margin-left: auto;
     margin-right: auto;
     margin-top: 30px;
+    font-family: 'Source Code Pro', monospace;
+
 }
 
  tr.highlighter:hover  {
@@ -144,11 +146,6 @@ th {
     /* background-color: rgba(15, 34, 101, 0.359); */
     background-color: #202a3b;
 }
-
-th:hover {
-    background-color: #7eabce;
-}
-
 
 .clickable {
     cursor: pointer;
