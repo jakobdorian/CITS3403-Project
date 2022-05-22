@@ -2,6 +2,7 @@
 
 {% block content %}
 
+<script type="text/javascript"> user_name = '{{ user_name }}'</script>
 
 <h1>Leaderboard</h1>
    
@@ -23,14 +24,9 @@
                     <td> {{ score.user_score }}</td>
                 </tr>
             {% endfor %} 
-        </tbody>
-    </table>
-    
-
-
+    </tbody>
+</table>
 {% endblock %}
 
-<!-- TODO: HIGHLIGHT PROFILE USERS SCORES -->
-<!-- ORDER HIGHEST-LOWEST JQUERY-->
 
 

@@ -61,10 +61,8 @@ class TestTypicalUserScenario(unittest.TestCase):
         db.session.add(score)
         db.session.commit()
     
-    # def test_drop_user(self): # TESTS DROPPING ALL TABLES
-    #     db.session.remove()
-    #     db.drop_all()
-    
+    def test_drop_user(self):
+        db.session.remove()
 
     
 

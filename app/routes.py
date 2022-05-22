@@ -28,8 +28,8 @@ def register():
         db.session.add(user)
         db.session.commit()
         flash('Congratulations, you are now a user!')
-        #CHANGE THIS TO GO STRAIGHT TO STATS PAGE
-        return redirect(url_for('login'))
+        #CHANGED THIS TO GO STRAIGHT TO GAME- COULD BE STATS PAGE?
+        return redirect(url_for('game.html'))
     return render_template('register.html', title='Register', form=form)
 # CREATES LOGIN PAGE
 @app.route('/login', methods=['GET', 'POST'])
@@ -53,16 +53,16 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+#Show list of stats associated with user IF logged in  
 # CREATES USER STATS PAGE
 @app.route('/user_stats')
 def user_stats():
     if current_user.is_authenticated:
         user_id = current_user.id
-        #show list of stats associated with user IF logged in  
         my_scores = Score.query.filter_by(user_id=user_id)
         return render_template('user.html', user=my_scores, title="Profile")
     return render_template('user.html', title='Profile')
-
 
 #Register score into the database
 @app.route('/register_stats', methods=['POST'])
@@ -88,10 +88,9 @@ def leaderboard():
     all_scores = Score.query.all()
     user = User.query.all()
     if current_user.is_authenticated:
-        user_id = current_user.id
-    
-    
-    return render_template('leaderboard.html', title='Leaderboard', scores=all_scores, user=user)
+        user_name = current_user.username
+        return render_template('leaderboard.html', title='Leaderboard', scores=all_scores, user_name=user_name)
+    return render_template('leaderboard.html', title='Leaderboard', scores=all_scores)
 
 #db testing
 @app.route('/update_puzzle', methods = ['post'])
