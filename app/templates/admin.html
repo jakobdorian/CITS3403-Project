@@ -28,7 +28,7 @@
                     <td> {{ puzzle.date}} </td>
                     <td> 
                         <button onclick = 'openDateEditor({{puzzle.id}})'data-toggle="modal" data-target="#myModal">Edit</button>
-                        <button> Delete Row </button>
+                        <button> Delete </button>
                     </td>
                 </tr>
             {% endfor %} 
@@ -45,7 +45,7 @@
                     <h4 class="modal-title">Date Editor</h4>
                 </div>
                 <div class="modal-body" id = "modalBody">
-                    <p>Please enter in (MM/DD/YYYY) format: </p>
+                    <p style = 'color:black'>Please enter in (MM/DD/YYYY) format: </p>
                     <input type ='Text' id = 'dateInput' placeholder = 'MM/DD/YYYY'>
                 </div>
                 <div class="modal-footer" id = 'footer'>
