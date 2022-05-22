@@ -169,16 +169,11 @@ def testfn():
         tempDate = datetime.datetime.today().strftime ('%d%m%Y')
         finalDate = tempDate[0:2] + '/' + tempDate[2:4]  + '/' + tempDate[4:8]
         
-        Puzzles = Puzzle.query.all()
-        for puzzle in Puzzles:
-            if (puzzle.date == finalDate): #matching based on todays date
-                patternList.append(puzzle.puzzle01)
-                patternList.append(puzzle.puzzle02)
-                patternList.append(puzzle.puzzle03)
-                
-                
-                jsThings = {'patterns': patternList}
-                message = {'greeting':'Hello from Flask!'}
-                return jsonify(message)  # serialize and use JSON headers
-                #return render_template('game.js', title = 'Game', jsThings = jsThings)
-                #return jsonify(jsThings)  # serialize and use JSON headers
+        puzzles = Puzzle.query.all()
+        for puzzle in puzzles:
+            patternList.append(puzzle.puzzle01)
+            patternList.append(puzzle.puzzle02)
+            patternList.append(puzzle.puzzle03)
+            message = {'greeting':patternList}
+            return jsonify(message)  # serialize and use JSON headers
+            #return render_template('game.js', title = 'Game', patternList = patternList)           
