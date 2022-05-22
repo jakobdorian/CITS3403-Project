@@ -8,6 +8,8 @@ jQuery(document).ready(function( $ ) {
 jQuery(document).ready(function () {
   $("#myTable").each(function () { //For each element in myTable
     //If contains current users name, add class for css use
-    $('tr:contains("' + user_name + '")').addClass('highlighter') 
+    if (user_name !== "") {
+      $('tr:contains("' + user_name + '")').addClass('highlighter') 
+    }
   });
 });
