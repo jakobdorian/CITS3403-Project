@@ -1,7 +1,7 @@
 from ftplib import B_CRLF
 import json
 
-from requests import JSONDecodeError
+#from requests import JSONDecodeError
 from app import app, db
 from app.forms import LoginForm, RegistrationForm
 from app.models import User, Score, Puzzle
