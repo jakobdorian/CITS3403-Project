@@ -145,6 +145,10 @@ th {
     background-color: #202a3b;
 }
 
+th:hover {
+    background-color: #7eabce;
+}
+
 
 .clickable {
     cursor: pointer;
