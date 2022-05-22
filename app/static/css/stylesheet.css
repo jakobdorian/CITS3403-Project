@@ -177,6 +177,10 @@ th {
     background-color: #202a3b;
 }
 
+th:hover{
+    background-color:  #58778f;
+}
+
 strong {
     font-size: 30px;
 }
@@ -198,7 +202,6 @@ strong {
     background-color: #2d394d;
     padding: 10px;
     gap: 50px;
-    justify-items
 }
 
 .grid-item {
