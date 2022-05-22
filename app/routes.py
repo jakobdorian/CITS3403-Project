@@ -57,7 +57,7 @@ def user_stats():
         user_id = current_user.id
         #show list of stats associated with user IF logged in  
         my_scores = Score.query.filter_by(user_id=user_id)
-        return render_template('user.html', user=my_scores)
+        return render_template('user.html', user=my_scores, title="Profile")
     return render_template('user.html', title='Profile')
 
 
