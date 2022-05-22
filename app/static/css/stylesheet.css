@@ -193,12 +193,12 @@ strong {
 
 /* GRID STYLING */
 .grid-container {
-    max-width: 1600px;
-    max-height: 1600px;
+    max-width: 1800px;
+    max-height: 1800px;
     margin: 0 auto;
     display: grid;
     justify-content: center;
-    grid-template-columns: 20% 20%;
+    grid-template-columns: 25% 25%;
     background-color: #2d394d;
     padding: 10px;
     gap: 50px;
