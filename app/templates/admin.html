@@ -5,7 +5,7 @@
     <script src = "{{ url_for('static', filename='js/admin.js') }}"></script>
     <h1>Admin</h1>
     <form action = "/update_puzzle", methods = "post">
-        <button id = 'addData' type = 'button' type ='submit' onclick ='insertPattern()'> Add Patterns </button>
+        <button id = 'addData' type = 'button' type ='submit' onclick ='insertPattern()'> Add Row </button> 
       </form>  
       <table >
         <thead>
@@ -14,6 +14,8 @@
                 <th> Pattern 01 </th>
                 <th> Pattern 02 </th>
                 <th> Pattern 03 </th>
+                <th> Date </th>
+                <th> Delete Row </th>
             </tr>
         </thead>
         <tbody>
@@ -23,6 +25,8 @@
                     <td> {{ puzzle.puzzle01 }} </td>
                     <td> {{ puzzle.puzzle02 }} </td>
                     <td> {{ puzzle.puzzle03 }}</td>
+                    <td> {{ puzzle.date}}<button> Select Date </button> </td>
+                    <td> <button> Delete Row </button> </td>
                 </tr>
             {% endfor %} 
         </tbody>

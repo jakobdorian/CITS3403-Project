@@ -103,17 +103,19 @@ def update():
     puzzle = Puzzle(
         puzzle01 = pattern01,
         puzzle02 = pattern02,
-        puzzle03 = pattern03        
+        puzzle03 = pattern03,
     )
     
     db.session.add(puzzle)
     db.session.commit()
+    '''
+    x = Puzzle.query.all()
+    for y in x:
+        db.session.delete(y)
+    db.session.commit()
+    '''
     return  render_template('game.html', title = 'Game')
 
-@app.route('/register_game', methods=['GET', 'POST'])
-def results():
-    all_scores = Puzzle.query.all()
-    return render_template('game.html', scores=all_scores)
 
 @app.route('/admin')
 @login_required

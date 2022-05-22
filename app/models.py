@@ -39,3 +39,5 @@ class Puzzle(db.Model):
     puzzle01 = db.Column(db.String(64))
     puzzle02 = db.Column(db.String(64))
     puzzle03 = db.Column(db.String(64))
+    date = db.Column(db.String)
+    
