@@ -1,6 +1,7 @@
 
 head,body{
     text-align: center;
+    padding-bottom: 50px;
 }
 
 h1 {
@@ -27,7 +28,7 @@ img{
 .para{ 
     max-width: 1500px;
     margin: auto;
-    font-size: 15px;
+    font-size: 25px;
     font-family: 'Source Code Pro', monospace;
     width:70%;      
     position: center;
@@ -198,7 +199,7 @@ strong {
     margin: 0 auto;
     display: grid;
     justify-content: center;
-    grid-template-columns: 20% 20%;
+    grid-template-columns: 30% 30%;
     background-color: #2d394d;
     padding: 10px;
     gap: 50px;
@@ -249,4 +250,8 @@ h4{
 #myError {
     color:red;
     font-size: 25px;
+}
+
+hr {
+    width: 70%;
 }
