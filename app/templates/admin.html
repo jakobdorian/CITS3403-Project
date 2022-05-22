@@ -15,7 +15,7 @@
                 <th> Pattern 02 </th>
                 <th> Pattern 03 </th>
                 <th> Date </th>
-                <th> Delete Row </th>
+                <th> Admin Options </th>
             </tr>
         </thead>
         <tbody>
@@ -25,8 +25,11 @@
                     <td> {{ puzzle.puzzle01 }} </td>
                     <td> {{ puzzle.puzzle02 }} </td>
                     <td> {{ puzzle.puzzle03 }}</td>
-                    <td> {{ puzzle.date}}<button> Select Date </button> </td>
-                    <td> <button> Delete Row </button> </td>
+                    <td> {{ puzzle.date}} </td>
+                    <td> 
+                        <button> Select Date </button> 
+                        <button> Delete Row </button>
+                    </td>
                 </tr>
             {% endfor %} 
         </tbody>
