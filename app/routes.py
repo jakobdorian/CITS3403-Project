@@ -1,3 +1,4 @@
+from distutils.log import error
 from ftplib import B_CRLF
 import json
 
@@ -35,20 +36,25 @@ def register():
 # CREATES LOGIN PAGE
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    error = None
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
-        if user is None or not user.check_password(form.password.data):
-            flash('Invalid username or password')
-            return redirect(url_for('login'))
+        if user is None:
+            flash('You dont have an account with us -Please Register here!')
+            return redirect(url_for('register'))
+        if user is not user.check_password(form.password.data):
+            error = 'You used an invalid username or password!'
+            return render_template('login.html', title='Sign In', form=form, error=error)
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('index')
         return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
+
 # CREATES LOGOUT PAGE
 @app.route('/logout')
 def logout():
