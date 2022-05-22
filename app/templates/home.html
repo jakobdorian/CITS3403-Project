@@ -39,14 +39,16 @@
       />
     </div>
     <div class="grid-item">
-      Be careful as you will lose points for incorrect tiles!
+      <p>Be careful as you will lose points for incorrect tiles! </p>
+      <p>10 points awarded for each correct tile! </p>
+      <p>3 points deducted for each wrong tile! </p>
       <img
         src="{{ url_for('static', filename='images/incorrect_tile.jpg')}}"
         alt="Incorrect Tile"
       />
     </div>
     <div class="grid-item">
-      After finding all the correct tiles or 6 incorrect tiles, you will get a
+      After finding all 10 correct tiles or 6 incorrect tiles, you will get a
       score
       <img
         src="{{ url_for('static', filename='images/results_1.jpg')}}"
@@ -54,7 +56,8 @@
       />
     </div>
     <div class="grid-item">
-      Play 2 more times to receive a final score
+      <p>Play 2 more times to receive a final score! </p>
+      <p> The Final Score is the Average of the 3 Rounds! </p>
       <img
         src="{{ url_for('static', filename='images/results_full.jpg')}}"
         alt="Final Result"
