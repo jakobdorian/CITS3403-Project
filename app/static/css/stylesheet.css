@@ -27,7 +27,11 @@ img{
 .para{ 
     max-width: 1500px;
     margin: auto;
-    font-size: 20px;
+    font-size: 15px;
+    font-family: 'Source Code Pro', monospace;
+    width:70%;      
+    position: center;
+    text-align: center;
 }
 
 .empty{
@@ -75,10 +79,18 @@ span{
 
 }
 
+.container {
+    font-family: 'Source Code Pro', monospace;
+    padding:20px;
+}
+
 #button01, #button02 {
+    font-family: 'Source Code Pro', monospace;
+    border-radius: 15px;
     width: 25%;
     border: none;
     padding: 14px 28px;
+
     font-size: 16px;
     cursor: pointer;
     text-align: center;
