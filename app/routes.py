@@ -9,7 +9,7 @@ from werkzeug.urls import url_parse
 from sqlalchemy import func, extract
 import random
 
-
+# CREATES HOME PAGE
 @app.route('/home')
 def index():
     return render_template('home.html', title = 'Home')
@@ -28,7 +28,7 @@ def register():
         #CHANGE THIS TO GO STRAIGHT TO STATS PAGE
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
-
+# CREATES LOGIN PAGE
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -45,12 +45,12 @@ def login():
             next_page = url_for('index')
         return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
-
+# CREATES LOGOUT PAGE
 @app.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('index'))
-
+# CREATES USER STATS PAGE
 @app.route('/user_stats')
 def user_stats():
     if current_user.is_authenticated:
@@ -79,7 +79,7 @@ def register_stats():
 def game():
     allPuzzles = Puzzle.query.all()
     return render_template('game.html', title='Game', puzzles = allPuzzles)
-
+# CREATES LEADERBOARD PAGE
 @app.route('/leaderboard', methods=['GET', 'POST'])
 def leaderboard():
     all_scores = Score.query.all()
@@ -116,7 +116,7 @@ def update():
     '''
     return  render_template('game.html', title = 'Game')
 
-
+# CREATES ADMIN PAGE
 @app.route('/admin')
 @login_required
 def admin():
