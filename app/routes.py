@@ -142,9 +142,6 @@ def updatingDate():
     newDate = temp02[1]
    
     row = Puzzle.query.get(id)
-    newRow = Puzzle(
-        date = newDate
-        id = selectedId
-    )
+    newRow = Puzzle(date = newDate, id = selectedId)
    
     return render_template('admin.html', title = 'Admin')
