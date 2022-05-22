@@ -7,7 +7,7 @@ jQuery(document).ready(function( $ ) {
 //If user is logged in, highlight all their scores within the leaderboard
 jQuery(document).ready(function () {
   $("#myTable").each(function () { //For each element in myTable
-    //If contains current users name, add class for css use
+    //If a logged in user, add class for css use
     if (user_name !== "") {
       $('tr:contains("' + user_name + '")').addClass('highlighter') 
     }
