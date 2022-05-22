@@ -1,6 +1,6 @@
 import unittest
 from app import app, db
-from app.models import User, Score
+from app.models import User, Score, Puzzle
 
 
 class TestUserModel(unittest.TestCase):
@@ -31,6 +31,11 @@ class TestGameModel(unittest.TestCase):
         db.session.add(score)
         db.session.commit()
     
+    def test_new_puzzle(self):
+        puzzle = Puzzle(id=2, puzzle01 = "26, 2, 6, 21, 25, 1, 22, 27, 16, 23", puzzle02 = "10, 2, 3, 4, 20, 6, 7, 8, 9, 10", puzzle03 = "11, 2, 3, 4, 15, 6, 17, 8, 9, 10")
+        db.session.add(puzzle)
+        db.session.commit()
+
     # def test_drop_user(self): # TESTS DROPPING ALL TABLES FOR A USER
     #     db.session.remove()
     #     db.drop_all()
