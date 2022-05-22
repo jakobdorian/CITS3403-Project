@@ -6,7 +6,7 @@
     <h1>Admin</h1>
     <form action = "/update_puzzle", methods = "post">
         <button id = 'addData' type = 'button' type ='submit' onclick ='insertPattern()'> Add Row </button> 
-      </form>  
+    </form>  
       <table >
         <thead>
             <tr>
@@ -15,7 +15,8 @@
                 <th> Pattern 02 </th>
                 <th> Pattern 03 </th>
                 <th> Date </th>
-                <th> Admin Options </th>
+                <th> Edit Date </th>
+                <th> Delete </th>
             </tr>
         </thead>
         <tbody>
@@ -27,9 +28,10 @@
                     <td> {{ puzzle.puzzle03 }}</td>
                     <td> {{ puzzle.date}} </td>
                     <td> 
-                        <button> Select Date </button> 
-                        <button> Delete Row </button>
+                        <input type = 'text'>
+                        <button>Submit</button>
                     </td>
+                    <td> <button> Delete Row </button></td>
                 </tr>
             {% endfor %} 
         </tbody>

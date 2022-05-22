@@ -31,10 +31,10 @@ class Score(UserMixin, db.Model):
     today = date.today()
     format_date = today.strftime("%b-%d-%Y") #strips minutes, formats the date eg May-16-2022
     date = db.Column(db.String, default=format_date)
+    
 # DATABASE ENTRY FOR SCORES      
 class Puzzle(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    
     puzzle01 = db.Column(db.String(64))
     puzzle02 = db.Column(db.String(64))
     puzzle03 = db.Column(db.String(64))

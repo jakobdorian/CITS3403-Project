@@ -8,6 +8,7 @@ from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 from sqlalchemy import func, extract
 import random
+import sqlite3
 
 # CREATES HOME PAGE
 @app.route('/home')
@@ -127,3 +128,6 @@ def admin():
     else:
         flash("You are not authorized to access this page")
         return redirect(url_for('index'))
+    
+
+    
