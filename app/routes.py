@@ -174,6 +174,9 @@ def testfn():
 
 
                 
+                
                 jsThings = {'patterns': patternList}
-                return render_template('game.js', title = 'Game', jsThings = jsThings)
+                message = {'greeting':'Hello from Flask!'}
+                return jsonify(message)  # serialize and use JSON headers
+                #return render_template('game.js', title = 'Game', jsThings = jsThings)
                 #return jsonify(jsThings)  # serialize and use JSON headers
