@@ -5,7 +5,7 @@ import json
 from app import app, db
 from app.forms import LoginForm, RegistrationForm
 from app.models import User, Score, Puzzle
-from flask import Flask, render_template, redirect, url_for, request, session
+from flask import Flask, render_template, flash, redirect, url_for, request, session
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 from sqlalchemy import func, extract

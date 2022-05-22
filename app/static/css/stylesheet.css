@@ -1,7 +1,4 @@
-p {
-    font-family: 'Source Code Pro', monospace;
-    font-size: 30px;
-}
+
 head,body{
     text-align: center;
 }
@@ -31,6 +28,11 @@ img{
     max-width: 1300px;
     margin: auto;
     font-size: 15px;
+    font-family: 'Source Code Pro', monospace;
+    width:70%;      
+    position: center;
+    text-align: center;
+    
 }
 
 .empty{
@@ -191,8 +193,9 @@ strong {
     gap: 50px;
     justify-items
 }
+
 .grid-item {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgb(255, 255, 255, 0.8);
     border: 5px solid #202a3b;
     padding: 20px;
     font-size: 15px;
