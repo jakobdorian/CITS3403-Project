@@ -64,50 +64,40 @@ span{
     background-color: lightgrey;
 }
 
-
-
-/* dark theme */
-/* @media (prefers-color-scheme: dark) {
-=======
- /* @media (prefers-color-scheme: dark) { */
-    body {
-        /* background: #6c29e7; */
-        background: #2d394d;
-        /* color: white; */
-        color: lightgrey;       
+body {
+    background: #2d394d;
+    color: lightgrey;       
     }
 
-    .center, h1{
-        text-align: center;
-        /* font-family: "Lucida Console", "Courier New", monospace; */
-        font-family: 'Source Code Pro', monospace;
-    } 
+.center, h1{
+    text-align: center;
+    font-family: 'Source Code Pro', monospace;
+} 
 
-    ul{
-        display: inline-block;
-        text-align: left;
-        list-style-type: square;
-    }
+ul{
+    display: inline-block;
+    text-align: left;
+    list-style-type: square;
+}
 
-    a {
-        /* color: white !important; */
-        color: lightgrey !important;
-    }
+a {
+    color: lightgrey !important;
+}
 
-    .navbar-default {
-        background: #2d394d;
-        border-color: #323f56;
+.navbar-default {
+    background: #2d394d;
+    border-color: #323f56;
 
-        font-family: 'Source Code Pro', monospace;
-    }
+    font-family: 'Source Code Pro', monospace;
+}
 
-    .submit-dark {
-        color: black !important;
-    }
+.submit-dark {
+    color: black !important;
+}
 
-    .reg-dark {
+.reg-dark {
         color: #337ab7 !important;
-    }
+}
 
 /* TABLE STYLING */
 table {
