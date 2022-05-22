@@ -40,16 +40,17 @@
     </div>
     <div class="grid-item">
       <p>Be careful as you will lose points for incorrect tiles! </p>
-      <p>10 points awarded for each correct tile! </p>
-      <p>3 points deducted for each wrong tile! </p>
+      <p>10 points awarded for each correct tile (blue)!</p>
+      <p>3 points deducted for each wrong tile (red)! </p>
       <img
         src="{{ url_for('static', filename='images/incorrect_tile.jpg')}}"
         alt="Incorrect Tile"
       />
     </div>
     <div class="grid-item">
-      After finding all 10 correct tiles or 6 incorrect tiles, you will get a
-      score
+      <p>After finding all 10 correct tiles or 6 incorrect tiles, you will get a
+      score!</p>
+      <p> Remaining tiles will be revealed in green! </p>
       <img
         src="{{ url_for('static', filename='images/results_1.jpg')}}"
         alt="First Result"
