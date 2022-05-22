@@ -284,8 +284,6 @@ function fnCaller2(ids){
     var temp = idGen()
     var newPattern  = shuffle(temp)
 
-
-
     displayReset()
     setTimeout(function(){displayAnswer(newPattern);},1000)
     setTimeout(function(){hideAnswer(ids,newPattern);},2000)
@@ -329,13 +327,7 @@ window.onload = createfn();
 
 
 
-fetch('/test')
-.then(function (response) {
-    return response.json();
-}).then(function (text) {
-    console.log('GET response:');
-    console.log(JSON.stringify(text.patterns))
-});
+
 
 
 

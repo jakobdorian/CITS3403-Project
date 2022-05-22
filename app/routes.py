@@ -177,5 +177,5 @@ def testfn():
                 patternList.append(puzzle.puzzle03)
                 
                 jsThings = {'patterns': patternList}
-                #return render_template('game.js', title = 'Game', puzzles = jsThings)
-                return jsonify(jsThings)  # serialize and use JSON headers
+                return render_template('game.js', title = 'Game', patternList = patternList)
+                #return jsonify(jsThings)  # serialize and use JSON headers
