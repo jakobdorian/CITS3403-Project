@@ -37,6 +37,7 @@ pip install -r requirements.txt
 ```
 flask run
 ```
+The application will now be running at http://localhost:5000/
 ## (Optionally), run unit testing with this command
 ```
 python3 unit_test.py
