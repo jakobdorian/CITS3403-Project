@@ -28,8 +28,8 @@
                     <td> {{ puzzle.puzzle03 }}</td>
                     <td> {{ puzzle.date}} </td>
                     <td> 
-                        <input type = 'text'>
-                        <button>Submit</button>
+                        <input type = 'text' id = 'myInput' placeholder = 'MM/DD/YYYY'>
+                        <button onclick = 'updateDate({{puzzle.id}})'>Submit</button>
                     </td>
                     <td> <button> Delete Row </button></td>
                 </tr>

@@ -36,3 +36,26 @@ function insertPattern(){
         data: JSON.stringify(sendPuzzle)              
     });
 }
+
+//function to update Date
+function updateDate(id){
+    var temp = []
+    var input = document.getElementById('myInput').value;
+    if (input == ''){
+        window.alert('Please Enter a Date')
+        return
+    }
+    temp.push(id)
+    temp.push(input)
+    
+    const sendDate = JSON.stringify(temp)
+    console.log(sendDate) 
+
+    window.alert('Successfully updated date')
+    $.ajax({
+        url:"/updateDate",
+        type:"POST",
+        contentType: "application/json",
+        data: JSON.stringify(sendDate)              
+    });
+}

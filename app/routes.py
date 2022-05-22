@@ -1,5 +1,7 @@
 from ftplib import B_CRLF
 import json
+
+from requests import JSONDecodeError
 from app import app, db
 from app.forms import LoginForm, RegistrationForm
 from app.models import User, Score, Puzzle
@@ -128,6 +130,23 @@ def admin():
     else:
         flash("You are not authorized to access this page")
         return redirect(url_for('index'))
-    
 
+
+'''
+@app.route('/updateDate', methods = ['post'])
+def updatingDate():
     
+    temp01 = request.get_json()
+    temp02 = json.loads(temp01)
+    
+    id = temp02[0]
+    newDate = temp02[1]
+    
+    puzzle = Puzzle(
+        id = id,
+        date = newDate
+    )
+    db.session.add(puzzle)
+    db.session.commit()
+    return render_template('admin.html', title = 'Admin')
+'''
