@@ -1,4 +1,14 @@
 # CITS3403 Project
+## Memory Flash
+A memory game to improve and test concentration.
+## Group Members:
+- Jakob Kuriata (23278189)
+- Mandeal Chen Jan Tan (22647372)
+- Elisha Anstiss (22241944)
+- Jason Dam (21713758)
+## About this project:
+This application was built using Flask with the purpose of testing a users memory concentration. Users will be challenged with remembering a pattern of blocks that they must click in order to recieve a score that will be uploaded to the leaderboard if that user is logged in.
+# How to build the application
 ## Make sure you have python installed.
 ```
 python3
@@ -27,6 +37,7 @@ pip install -r requirements.txt
 ```
 flask run
 ```
+The application will now be running at http://localhost:5000/
 ## (Optionally), run unit testing with this command
 ```
 python3 unit_test.py
