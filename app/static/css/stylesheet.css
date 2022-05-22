@@ -1,4 +1,7 @@
-
+p {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 30px;
+}
 head,body{
     text-align: center;
 }
@@ -145,10 +148,6 @@ th {
     background-color: #202a3b;
 }
 
-th:hover {
-    background-color: #7eabce;
-}
-
 strong {
     font-size: 30px;
 }
@@ -188,4 +187,9 @@ h4{
 }
 .summaryRes {
     color: black;
+}
+
+#myError {
+    color:red;
+    font-size: 25px;
 }
