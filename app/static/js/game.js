@@ -179,7 +179,6 @@ function checker(arr1,arr2,id){
 
             //send final result to routes to be included in leaderboards
             const sendscore= JSON.stringify(finalScore) //Stringify converts a JS value to JSON
-            window.alert(sendscore)
             $.ajax({
                 url:"/register_stats",
                 type:"POST",
@@ -316,6 +315,9 @@ function shareRes(res1, res1a, res1b, res2, res2a, res2b, res3, res3a, res3b, re
 
     //remove text area
     document.body.removeChild(tempTxt);
+
+    //notify user that results have been copied to clipbaord
+    window.alert('Results have been copied to clipboard!')
 
     navigator.clipboard.writeText(tempTxt.value);
 
