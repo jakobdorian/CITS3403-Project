@@ -3,7 +3,7 @@
 {% block content %}
 <body>
     <script src = "{{ url_for('static', filename='js/admin.js') }}"></script>
-    <h1>Admin</h1>
+    <h1 id = 'h1'>Admin</h1>
     <form action = "/update_puzzle", methods = "post">
         <button id = 'addData' type = 'button' type ='submit' onclick ='insertPattern()'> Add Row </button> 
     </form>  

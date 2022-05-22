@@ -5,12 +5,13 @@ from requests import JSONDecodeError
 from app import app, db
 from app.forms import LoginForm, RegistrationForm
 from app.models import User, Score, Puzzle
-from flask import Flask, render_template, flash, redirect, url_for, request, session
+from flask import Flask, render_template, flash, redirect, url_for, request, session, jsonify
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 from sqlalchemy import func, extract
 import random
 import sqlite3
+import datetime
 
 # CREATES HOME PAGE
 @app.route('/home')
@@ -156,4 +157,21 @@ def delRow():
     
     return render_template('admin.html', title = 'Admin')
     
-    
+@app.route('/test', methods = ['GET'])
+def testfn():
+    # GET request
+    if request.method == 'GET':
+        patternList = []
+        tempDate = datetime.datetime.today().strftime ('%d%m%Y')
+        finalDate = tempDate[0:2] + '/' + tempDate[2:4]  + '/' + tempDate[4:8]
+        
+        Puzzles = Puzzle.query.all()
+        for puzzle in Puzzles:
+            if (puzzle.date == finalDate): #matching based on todays date
+                patternList.append(puzzle.puzzle01)
+                patternList.append(puzzle.puzzle02)
+                patternList.append(puzzle.puzzle03)
+                
+                jsThings = {'patterns': patternList}
+                #return render_template('game.js', title = 'Game', puzzles = jsThings)
+                return jsonify(jsThings)  # serialize and use JSON headers
