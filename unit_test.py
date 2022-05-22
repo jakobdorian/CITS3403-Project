@@ -28,7 +28,7 @@ class TestGameModel(unittest.TestCase):
         user = User(username="tester2", email="tester2@gmail.com", id=111)
         user.set_password('imatest')
         score = Score(user_id=111, user_score = float(80))
-        self.assertFalse(score.user_score <= float(0)) # TEST TO MAKE SURE SCORE IS NOT LESS THAN 0
+        self.assertTrue(score.user_score > float(0)) # TEST TO MAKE SURE SCORE IS NOT LESS THAN 0
         db.session.add(score)
         db.session.commit()
     
