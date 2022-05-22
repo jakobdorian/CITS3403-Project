@@ -48,13 +48,16 @@ function updateDate(id){
     var temp = []
 
     input = document.getElementById('dateInput').value;
-
+    if (input == ""){
+        window.alert('Please enter a Date!')
+        return
+    }
     temp.push(id)
     temp.push(input)
 
     //sending to backend
     const sendDate = JSON.stringify(temp)
-    console.log(sendDate)
+    window.alert('Successfully Updated! Refresh to View Changes!')
     $.ajax({
         url:'/updateDate',
         type: 'POST',

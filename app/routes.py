@@ -141,7 +141,9 @@ def updatingDate():
     selectedId = temp02[0]
     newDate = temp02[1]
    
-    row = Puzzle.query.get(id)
-    newRow = Puzzle(date = newDate, id = selectedId)
+    row = Puzzle.query.get(selectedId)
+    row.date = newDate
+    
+    db.session.commit()
    
     return render_template('admin.html', title = 'Admin')
