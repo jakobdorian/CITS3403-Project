@@ -28,9 +28,9 @@ img{
 }
 
 .para{ 
-    max-width: 1300px;
+    max-width: 1500px;
     margin: auto;
-    font-size: 15px;
+    font-size: 20px;
 }
 
 .empty{
@@ -195,7 +195,7 @@ strong {
     background-color: rgba(255, 255, 255, 0.8);
     border: 5px solid #202a3b;
     padding: 20px;
-    font-size: 15px;
+    font-size: 20px;
     font-weight: bold;
     text-align: center;
     color: #2d394d;
