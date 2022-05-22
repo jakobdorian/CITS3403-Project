@@ -110,12 +110,7 @@ def update():
     
     db.session.add(puzzle)
     db.session.commit()
-    '''
-    x = Puzzle.query.all()
-    for y in x:
-        db.session.delete(y)
-    db.session.commit()
-    '''
+    
     return  render_template('game.html', title = 'Game')
 
 # CREATES ADMIN PAGE
@@ -131,6 +126,7 @@ def admin():
         return redirect(url_for('index'))
 
 
+#update date column in Puzzle
 @app.route('/updateDate', methods = ['post'])
 def updatingDate():
     
@@ -146,3 +142,18 @@ def updatingDate():
     db.session.commit()
    
     return render_template('admin.html', title = 'Admin')
+
+#delete row in Puzzle
+@app.route('/delRow', methods = ['post'])
+def delRow():
+    
+    temp = request.get_json()
+    selectedId = json.loads(temp)
+    
+    row = Puzzle.query.get(selectedId)
+    db.session.delete(row)
+    db.session.commit()
+    
+    return render_template('admin.html', title = 'Admin')
+    
+    

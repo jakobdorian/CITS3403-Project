@@ -28,7 +28,7 @@
                     <td> {{ puzzle.date}} </td>
                     <td> 
                         <button onclick = 'openDateEditor({{puzzle.id}})'data-toggle="modal" data-target="#myModal">Edit</button>
-                        <button> Delete </button>
+                        <button onclick = 'delRow({{puzzle.id}})'> Delete </button>
                     </td>
                 </tr>
             {% endfor %} 

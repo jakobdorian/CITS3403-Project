@@ -28,7 +28,7 @@ function insertPattern(){
 
     //sending to backend
     const sendPuzzle= JSON.stringify(patternList) //Stringify converts a JS value to JSON
-    window.alert('Successfully added patterns, refresh to view new database')
+    window.alert('Successfully Added! Refresh to View Changes!')
     $.ajax({
         url:"/update_puzzle",
         type:"POST",
@@ -65,4 +65,18 @@ function updateDate(id){
         data: JSON.stringify(sendDate)
     })
     
+}
+
+
+//function to delete row
+function delRow(id){
+    console.log(id)
+    const sendId = JSON.stringify(id)
+    window.alert('Successfully Deleted! Refresh to View Changes!')
+    $.ajax({
+        url:'delRow',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(sendId)
+    })
 }
