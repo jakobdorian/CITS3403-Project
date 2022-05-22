@@ -13,6 +13,7 @@ import random
 import sqlite3
 
 # CREATES HOME PAGE
+@app.route('/')
 @app.route('/home')
 def index():
     return render_template('home.html', title = 'Home')
@@ -77,7 +78,6 @@ def register_stats():
     db.session.commit()
     return redirect(url_for('user_stats'))
 
-@app.route('/')
 @app.route('/game')
 def game():
     allPuzzles = Puzzle.query.all()

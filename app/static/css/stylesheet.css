@@ -13,16 +13,14 @@ button, input {
 }
 
 .empty{
-    background-color: lightgrey;    
+    background-color: lightgrey;
 }
 
 .answer{
-    /* background-color: aqua; */
     background-color: #354560;
 }
 
 .wrong{
-    /* background-color: red; */
     background-color: rgb(133, 5, 5);
 }
 
@@ -33,8 +31,8 @@ button, input {
 span{
     display: inline-block;
     padding: 2.5%;
-    height: 130px;
-    width: 130px;
+    height: 100px;
+    width: 100px;
     margin-right: 1px;
     margin-bottom: 1px;
     border: 5px solid #232d3c;
@@ -146,6 +144,15 @@ th {
     /* background-color: rgba(15, 34, 101, 0.359); */
     background-color: #202a3b;
 }
+
+th:hover {
+    background-color: #7eabce;
+}
+
+strong {
+    font-size: 30px;
+}
+
 
 .clickable {
     cursor: pointer;
