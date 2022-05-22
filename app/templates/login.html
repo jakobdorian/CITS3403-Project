@@ -3,9 +3,6 @@
 {% block content %}
 <div class = "container">
         <h1>Login</h1>
-        {% if error %}
-            <p class=error id="myError"> Error: {{ error }} </p>
-        {% endif %}
         <form action = "" method="post" novalidate>
             {{ form.hidden_tag() }}
             <p>
