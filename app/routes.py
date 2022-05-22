@@ -9,7 +9,6 @@ from werkzeug.urls import url_parse
 from sqlalchemy import func, extract
 import random
 
-
 @app.route('/home')
 def index():
     return render_template('home.html', title = 'Home')
@@ -25,8 +24,8 @@ def register():
         db.session.add(user)
         db.session.commit()
         flash('Congratulations, you are now a user!')
-        #CHANGE THIS TO GO STRAIGHT TO STATS PAGE
-        return redirect(url_for('login'))
+        #CHANGED THIS TO GO STRAIGHT TO GAME- COULD BE STATS PAGE?
+        return redirect(url_for('game.html'))
     return render_template('register.html', title='Register', form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -51,15 +50,14 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
+#Show list of stats associated with user IF logged in  
 @app.route('/user_stats')
 def user_stats():
     if current_user.is_authenticated:
         user_id = current_user.id
-        #show list of stats associated with user IF logged in  
         my_scores = Score.query.filter_by(user_id=user_id)
         return render_template('user.html', user=my_scores)
     return render_template('user.html', title='Profile')
-
 
 #Register score into the database
 @app.route('/register_stats', methods=['POST'])
@@ -80,12 +78,15 @@ def game():
     allPuzzles = Puzzle.query.all()
     return render_template('game.html', title='Game', puzzles = allPuzzles)
 
+
 @app.route('/leaderboard', methods=['GET', 'POST'])
 def leaderboard():
     all_scores = Score.query.all()
     if current_user.is_authenticated:
-        logged_inid = current_user.id
+        user_name = current_user.username
+        return render_template('leaderboard.html', title='Leaderboard', scores=all_scores, user_name=user_name)
     return render_template('leaderboard.html', title='Leaderboard', scores=all_scores)
+
 
 #Db testing
 @app.route('/update_puzzle/', methods = ['post'])

@@ -3,6 +3,11 @@ head,body{
     text-align: center;
 }
 
+h1 {
+    padding: 40px;
+    font-size: 60px;
+}
+
 button, input {
     color: black !important;
 }
@@ -107,21 +112,34 @@ span{
 /* TABLE STYLING */
 table {
     border-collapse: separate;
-   
-    width: 75%;
+    font-size: 25px;
+    width: 70%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 30px;
 }
 
-tr {
-   background-color: #2d394d;
- } .initial { background-color: #2d394d }
- .normal { background-color: #2d394d }
- .highlight { background-color: rgb(62, 21, 152) }
+ tr.highlighter:hover  {
+   background-color: #b0cadd; 
+   color:black;
+
+}
+
+tr.highlighter {
+    color:black;
+    background-color:  #7eabce;
+}
+
+#usertable tr:hover {
+    background-color: #7eabce;
+}
+
+tr:hover {
+    background-color:  #58778f;
+}
+
 
 th, td {
-
     border: 5px solid #202a3b;
     padding: 15px;
     text-align: center;
@@ -129,12 +147,16 @@ th, td {
 }
 
 th {
+    font-size: 30px;
+    color: white;
     border-top: none;
     font-weight: bold;
     background-color: #202a3b;
 }
 
-
+td {
+    color: white;
+}
 
 /* Modal Things */
 h4{
