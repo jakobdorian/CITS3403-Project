@@ -54,6 +54,12 @@ span{
     }
 }
 
+#button03 {
+    font-size: 20px;
+    font-family: 'Source Code Pro', monospace;
+
+}
+
 #button01, #button02 {
     width: 25%;
     border: none;

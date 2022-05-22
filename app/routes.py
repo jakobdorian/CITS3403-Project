@@ -1,4 +1,3 @@
-from distutils.log import error
 from ftplib import B_CRLF
 import json
 
@@ -33,21 +32,18 @@ def register():
         #CHANGED THIS TO GO STRAIGHT TO GAME- COULD BE STATS PAGE?
         return redirect(url_for('game.html'))
     return render_template('register.html', title='Register', form=form)
+
 # CREATES LOGIN PAGE
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    error = None
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
-        if user is None:
-            flash('You dont have an account with us -Please Register here!')
-            return redirect(url_for('register'))
-        if user is not user.check_password(form.password.data):
-            error = 'You used an invalid username or password!'
-            return render_template('login.html', title='Sign In', form=form, error=error)
+        if user is None or not user.check_password(form.password.data):
+            flash('Invalid username or password')
+            return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
@@ -61,11 +57,10 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
-#Show list of stats associated with user IF logged in  
 # CREATES USER STATS PAGE
 @app.route('/user_stats')
 def user_stats():
-    if current_user.is_authenticated:
+    if current_user.is_authenticated: #Show list of stats associated with user IF logged in  
         user_id = current_user.id
         my_scores = Score.query.filter_by(user_id=user_id)
         return render_template('user.html', user=my_scores, title="Profile")
@@ -88,6 +83,7 @@ def register_stats():
 def game():
     allPuzzles = Puzzle.query.all()
     return render_template('game.html', title='Game', puzzles = allPuzzles)
+
 # CREATES LEADERBOARD PAGE
 @app.route('/leaderboard', methods=['GET', 'POST'])
 def leaderboard():
@@ -161,5 +157,3 @@ def delRow():
     db.session.commit()
     
     return render_template('admin.html', title = 'Admin')
-    
-    

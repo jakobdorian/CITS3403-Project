@@ -201,6 +201,7 @@ function checker(arr1,arr2,id){
                 shareRes(score1, G1C1, G1C2, score2, G2C1, G2C2, score3, G3C1, G3C2, finalScore);
                 var youveshared = document.createTextNode('- Result copied to your clipboard!')
                 a.appendChild(youveshared);
+                a.setAttribute('disabled', '') //cannot click again
             }
             footer.appendChild(a)
         }
