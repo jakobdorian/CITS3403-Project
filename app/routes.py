@@ -5,7 +5,7 @@ import json
 from app import app, db
 from app.forms import LoginForm, RegistrationForm
 from app.models import User, Score, Puzzle
-from flask import Flask, render_template, flash, redirect, url_for, request, session, jsonify
+from flask import Flask, render_template, redirect, url_for, request, session, jsonify
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 from sqlalchemy import func, extract
@@ -13,7 +13,7 @@ import random
 import sqlite3
 import datetime
 
-# CREATES HOME PAGE
+#Creates Home Page
 @app.route('/')
 @app.route('/home')
 def index():
@@ -29,12 +29,10 @@ def register():
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
-        flash('Congratulations, you are now a user!')
-        #CHANGED THIS TO GO STRAIGHT TO GAME- COULD BE STATS PAGE?
-        return redirect(url_for('game.html'))
+        return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
-# CREATES LOGIN PAGE
+#Creates Login page
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
@@ -53,13 +51,13 @@ def login():
         return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
 
-# CREATES LOGOUT PAGE
+#Creates Logout page
 @app.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('index'))
 
-# CREATES USER STATS PAGE
+#Creates User stats page
 @app.route('/user_stats')
 def user_stats():
     if current_user.is_authenticated: #Show list of stats associated with user IF logged in  
@@ -86,7 +84,7 @@ def game():
     allPuzzles = Puzzle.query.all()
     return render_template('game.html', title='Game', puzzles = allPuzzles)
 
-# CREATES LEADERBOARD PAGE
+#Creates Leaderboard page
 @app.route('/leaderboard', methods=['GET', 'POST'])
 def leaderboard():
     all_scores = Score.query.all()
@@ -96,7 +94,7 @@ def leaderboard():
         return render_template('leaderboard.html', title='Leaderboard', scores=all_scores, user_name=user_name)
     return render_template('leaderboard.html', title='Leaderboard', scores=all_scores)
 
-#db testing
+#DB testing
 @app.route('/update_puzzle', methods = ['post'])
 def update():
     temp01 = request.get_json()
@@ -117,7 +115,7 @@ def update():
     
     return  render_template('game.html', title = 'Game')
 
-# CREATES ADMIN PAGE
+#Creates Admin Page
 @app.route('/admin')
 @login_required
 def admin():
@@ -126,11 +124,10 @@ def admin():
         all_puzzles = Puzzle.query.all()
         return render_template('admin.html', title='Admin', puzzles = all_puzzles)
     else:
-        flash("You are not authorized to access this page")
         return redirect(url_for('index'))
 
 
-#update date column in Puzzle
+#Update date column in Puzzle
 @app.route('/updateDate', methods = ['post'])
 def updatingDate():
     
@@ -147,7 +144,7 @@ def updatingDate():
    
     return render_template('admin.html', title = 'Admin')
 
-#delete row in Puzzle
+#Delete row in Puzzle
 @app.route('/delRow', methods = ['post'])
 def delRow():
     
@@ -163,17 +160,20 @@ def delRow():
     
 @app.route('/test', methods = ['GET'])
 def testfn():
-    # GET request
     if request.method == 'GET':
-        patternList = []
+        patternList = []        
         tempDate = datetime.datetime.today().strftime ('%d%m%Y')
         finalDate = tempDate[0:2] + '/' + tempDate[2:4]  + '/' + tempDate[4:8]
         
-        puzzles = Puzzle.query.all()
-        for puzzle in puzzles:
-            patternList.append(puzzle.puzzle01)
-            patternList.append(puzzle.puzzle02)
-            patternList.append(puzzle.puzzle03)
-            message = {'greeting':patternList}
-            return jsonify(message)  # serialize and use JSON headers
-            #return render_template('game.js', title = 'Game', patternList = patternList)           
+        Puzzles = Puzzle.query.all()
+        for puzzle in Puzzles:
+            if (puzzle.date == finalDate): #matching based on todays date
+                patternList.append(puzzle.puzzle01)
+                patternList.append(puzzle.puzzle02)
+                patternList.append(puzzle.puzzle03)
+                
+                jsThings = {'patterns': patternList}
+                message = {'greeting':'Hello from Flask!'}
+                return jsonify(message)  # serialize and use JSON headers
+                #return render_template('game.js', title = 'Game', jsThings = jsThings)
+                #return jsonify(jsThings)  # serialize and use JSON headers

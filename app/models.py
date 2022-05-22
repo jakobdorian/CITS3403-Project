@@ -2,7 +2,8 @@ from app import db, login
 from datetime import date
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
-# DATABASE ENTRY FOR USERS
+
+#Database entry for Users
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
@@ -22,7 +23,8 @@ class User(UserMixin, db.Model):
     @login.user_loader
     def load_user(id):
         return User.query.get(int(id))
-# DATABASE ENTRY FOR SCORES
+
+#Database entries for Scores
 class Score(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_score = db.Column(db.Integer)
@@ -32,7 +34,7 @@ class Score(UserMixin, db.Model):
     format_date = today.strftime("%b-%d-%Y") #strips minutes, formats the date eg May-16-2022
     date = db.Column(db.String, default=format_date)
     
-# DATABASE ENTRY FOR SCORES      
+#Database entries for puzzle   
 class Puzzle(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     puzzle01 = db.Column(db.String(64))

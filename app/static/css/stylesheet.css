@@ -118,7 +118,6 @@ a {
 .navbar-default {
     background: #2d394d;
     border-color: #323f56;
-
     font-family: 'Source Code Pro', monospace;
 }
 
@@ -130,7 +129,7 @@ a {
         color: #337ab7 !important;
 }
 
-/* TABLE STYLING */
+/* Table Styling */
 table {
     border-collapse: separate;
     font-size: 25px;
@@ -174,7 +173,6 @@ th {
     font-size: 30px;
     border-top: none;
     font-weight: bold;
-    /* background-color: rgba(15, 34, 101, 0.359); */
     background-color: #202a3b;
 }
 
@@ -192,7 +190,7 @@ strong {
     background-color:purple;
 }
 
-/* GRID STYLING */
+/* Grid Styling */
 .grid-container {
     max-width: 1800px;
     max-height: 1800px;
@@ -216,7 +214,6 @@ strong {
     
 }
 
-/* Modal Things */
 h4{
     color: black;
     font-size: 40px;
