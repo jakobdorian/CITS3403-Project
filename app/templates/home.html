@@ -1,23 +1,42 @@
 {% extends "base.html"%}
 
 {% block content %} 
-    <h1><strong>Memory Flash</strong></h1>
+    <h1>Memory Flash</h1>
 
     <div class = "center">
-        <p1>Welcome to Memory Flash!  </p1> <br>
-
-        <p2>The memory game to improve and test concentration.</p2>
-        <p> In ancient times, the ability to memorise was a prized skill. According to Northwestern University psychology professor Paul Reber, our brains can store up to 2.5 petabytes of data. That’s the same as three million hours of TV shows! Having a good memory has been proven to boost brain health, problem solving abilities, reading comprehension and focus. Memory strength is just like muscular strength, so the more you use it, the stronger you’ll get. Playing this game is a great way to strengthen your brain’s memory capacity. It’s time to take control of your memory, start absorbing all the information that comes to you, and always have it at your fingertips!</p>
+        <p>Welcome to Memory Flash!  </p>
+        <p>The memory game to improve and test concentration.</p>
+        <p> In ancient times, the ability to memorise was a prized skill. </p>
+        <p>According to Northwestern University psychology professor Paul Reber, our brains can store up to 2.5 petabytes of data.</p>
+        <p>That’s the same as three million hours of TV shows! </p>
+        <p>Having a good memory has been proven to boost brain health, problem solving abilities, reading comprehension and focus.</p>
+        <p> Memory strength is just like muscular strength,</p>
+        <p>So the more you use it, the stronger you’ll get. </p>
+        <p>Playing this game is a great way to strengthen your brain’s memory capacity.</p>
+        <p>It’s time to take control of your memory, start absorbing all the information that comes to you, and always have it at your fingertips!</p>
 
         <h2>How To Play</h2>
         
-        <ul>
-            <li>Click the play button and remember the coloured tiles in 1 second.</li>
-            <li>Click on all the tiles that were coloured in navy.</li>
-            <li>Be careful as you will lose points for incorrect tiles!</li>
-            <li>After finding all the correct tiles or 6 incorrect tiles, you will get a score for the round. </li>
-            <li>Play 2 more times to receive a final score. </li>
-            <li>Aim for the highest score possible and challenge your friends daily!</li> 
-        </ul>
+        <div class="grid-container">
+            <div class="grid-item"> Click the play button and remember the coloured tiles
+                <img src="{{ url_for('static', filename='images/full_puzzle.jpg')}}" alt="Revealed Blocks">
+            </div>
+            <div class="grid-item"> Click on all the tiles that were coloured in
+                <img src="{{ url_for('static', filename='images/empty_board.jpg')}}" alt="Empty Board">
+            </div>
+            <div class="grid-item">Be careful as you will lose points for incorrect tiles!
+                <img src="{{ url_for('static', filename='images/incorrect_tile.jpg')}}" alt="Incorrect Tile">
+            </div>
+            <div class="grid-item">After finding all the correct tiles or 6 incorrect tiles, you will get a score 
+                <img src="{{ url_for('static', filename='images/results_1.jpg')}}" alt="First Result">
+            </div>
+            <div class="grid-item">Play 2 more times to receive a final score 
+                <img src="{{ url_for('static', filename='images/results_full.jpg')}}" alt="Final Result">
+            </div>
+            <div class="grid-item">Aim for 100 points and challenge your friends daily!
+                <img src="{{ url_for('static', filename='images/full_score.jpg')}}" alt="Full Score">
+            </div>
+            
+        </div>
     </div>
 {% endblock %}
