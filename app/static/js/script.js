@@ -12,5 +12,4 @@ jQuery(document).ready(function () {
       $('tr:contains("' + user_name + '")').addClass('highlighter') 
     }
   });
-  console.log('patternList=', jsThings);
 });
