@@ -8,21 +8,41 @@ h1 {
     font-size: 60px;
 }
 
+ul{
+    display: inline-block;
+    text-align: left;
+    list-style-type: square;
+}
+
 button, input {
     color: black !important;
 }
 
+img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: fill;
+}
+
+.para{ 
+    max-width: 1500px;
+    margin: auto;
+    font-size: 15px;
+    font-family: 'Source Code Pro', monospace;
+    width:70%;      
+    position: center;
+    text-align: center;
+}
+
 .empty{
-    background-color: lightgrey;    
+    background-color: lightgrey;
 }
 
 .answer{
-    /* background-color: aqua; */
     background-color: #354560;
 }
 
 .wrong{
-    /* background-color: red; */
     background-color: rgb(133, 5, 5);
 }
 
@@ -33,8 +53,8 @@ button, input {
 span{
     display: inline-block;
     padding: 2.5%;
-    height: 130px;
-    width: 130px;
+    height: 100px;
+    width: 100px;
     margin-right: 1px;
     margin-bottom: 1px;
     border: 5px solid #232d3c;
@@ -53,10 +73,24 @@ span{
     }
 }
 
+#button03 {
+    font-size: 20px;
+    font-family: 'Source Code Pro', monospace;
+
+}
+
+.container {
+    font-family: 'Source Code Pro', monospace;
+    padding:20px;
+}
+
 #button01, #button02 {
+    font-family: 'Source Code Pro', monospace;
+    border-radius: 15px;
     width: 25%;
     border: none;
     padding: 14px 28px;
+
     font-size: 16px;
     cursor: pointer;
     text-align: center;
@@ -74,11 +108,7 @@ body {
     font-family: 'Source Code Pro', monospace;
 } 
 
-ul{
-    display: inline-block;
-    text-align: left;
-    list-style-type: square;
-}
+
 
 a {
     color: lightgrey !important;
@@ -107,6 +137,8 @@ table {
     margin-left: auto;
     margin-right: auto;
     margin-top: 30px;
+    font-family: 'Source Code Pro', monospace;
+
 }
 
  tr.highlighter:hover  {
@@ -145,14 +177,42 @@ th {
     background-color: #202a3b;
 }
 
-th:hover {
-    background-color: #7eabce;
+th:hover{
+    background-color:  #58778f;
+}
+
+strong {
+    font-size: 30px;
 }
 
 
 .clickable {
     cursor: pointer;
     background-color:purple;
+}
+
+/* GRID STYLING */
+.grid-container {
+    max-width: 1600px;
+    max-height: 1600px;
+    margin: 0 auto;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 20% 20%;
+    background-color: #2d394d;
+    padding: 10px;
+    gap: 50px;
+}
+
+.grid-item {
+    background-color: rgb(255, 255, 255, 0.8);
+    border: 5px solid #202a3b;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: #2d394d;
+    
 }
 
 /* Modal Things */
@@ -184,4 +244,9 @@ h4{
 }
 .summaryRes {
     color: black;
+}
+
+#myError {
+    color:red;
+    font-size: 25px;
 }

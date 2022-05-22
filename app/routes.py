@@ -1,7 +1,7 @@
 from ftplib import B_CRLF
 import json
 
-from requests import JSONDecodeError
+#from requests import JSONDecodeError
 from app import app, db
 from app.forms import LoginForm, RegistrationForm
 from app.models import User, Score, Puzzle
@@ -14,6 +14,7 @@ import sqlite3
 import datetime
 
 # CREATES HOME PAGE
+@app.route('/')
 @app.route('/home')
 def index():
     return render_template('home.html', title = 'Home')
@@ -32,34 +33,36 @@ def register():
         #CHANGED THIS TO GO STRAIGHT TO GAME- COULD BE STATS PAGE?
         return redirect(url_for('game.html'))
     return render_template('register.html', title='Register', form=form)
+
 # CREATES LOGIN PAGE
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    error = None
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user is None or not user.check_password(form.password.data):
-            flash('Invalid username or password')
-            return redirect(url_for('login'))
+            error = 'Invalid username or password'
+            return render_template('login.html', title='Sign In', form=form, error=error)
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('index')
         return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
+
 # CREATES LOGOUT PAGE
 @app.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('index'))
 
-#Show list of stats associated with user IF logged in  
 # CREATES USER STATS PAGE
 @app.route('/user_stats')
 def user_stats():
-    if current_user.is_authenticated:
+    if current_user.is_authenticated: #Show list of stats associated with user IF logged in  
         user_id = current_user.id
         my_scores = Score.query.filter_by(user_id=user_id)
         return render_template('user.html', user=my_scores, title="Profile")
@@ -78,11 +81,11 @@ def register_stats():
     db.session.commit()
     return redirect(url_for('user_stats'))
 
-@app.route('/')
 @app.route('/game')
 def game():
     allPuzzles = Puzzle.query.all()
     return render_template('game.html', title='Game', puzzles = allPuzzles)
+
 # CREATES LEADERBOARD PAGE
 @app.route('/leaderboard', methods=['GET', 'POST'])
 def leaderboard():
@@ -156,6 +159,7 @@ def delRow():
     db.session.commit()
     
     return render_template('admin.html', title = 'Admin')
+
     
 @app.route('/test', methods = ['GET'])
 def testfn():
