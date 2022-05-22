@@ -36,9 +36,38 @@ class TestGameModel(unittest.TestCase):
         db.session.add(puzzle)
         db.session.commit()
 
-    # def test_drop_user(self): # TESTS DROPPING ALL TABLES FOR A USER
+    # def test_drop_user(self): # TESTS DROPPING ALL TABLES
     #     db.session.remove()
     #     db.drop_all()
+
+class TestTypicalUserScenario(unittest.TestCase):
+    def test_initialize_database(self): # DATABASE IS CREATED 
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://'
+        db.create_all()
+    
+    def test_new_user(self): # USER CREATES A ACCOUNT
+        user = User(username="tester", email="tester@gmail.com", id=111)
+        user.set_password('imatest')
+        self.assertTrue(user.check_password('imatest'))
+        self.assertFalse(user.check_password('iamNOTatest'))
+    
+    def test_new_puzzle(self): # ADD A NEW PUZZLE
+        puzzle = Puzzle(id=6, puzzle01 = "24, 2, 6, 21, 23, 1, 22, 27, 16, 23", puzzle02 = "1, 12, 3, 4, 20, 6, 7, 8, 9, 10", puzzle03 = "11, 12, 3, 4, 15, 6, 17, 8, 19, 1")
+        db.session.add(puzzle)
+        db.session.commit()
+     
+    def test_new_score(self): # USER SUBMITS A SCORE
+        score = Score(user_id=111, user_score = float(80))
+        db.session.add(score)
+        db.session.commit()
+    
+    # def test_drop_user(self): # TESTS DROPPING ALL TABLES
+    #     db.session.remove()
+    #     db.drop_all()
+    
+
+    
+
 
 
 
