@@ -1,5 +1,7 @@
 from ftplib import B_CRLF
 import json
+
+from requests import JSONDecodeError
 from app import app, db
 from app.forms import LoginForm, RegistrationForm
 from app.models import User, Score, Puzzle
@@ -8,7 +10,9 @@ from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 from sqlalchemy import func, extract
 import random
+import sqlite3
 
+# CREATES HOME PAGE
 @app.route('/home')
 def index():
     return render_template('home.html', title = 'Home')
@@ -27,7 +31,7 @@ def register():
         #CHANGED THIS TO GO STRAIGHT TO GAME- COULD BE STATS PAGE?
         return redirect(url_for('game.html'))
     return render_template('register.html', title='Register', form=form)
-
+# CREATES LOGIN PAGE
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -44,19 +48,20 @@ def login():
             next_page = url_for('index')
         return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
-
+# CREATES LOGOUT PAGE
 @app.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('index'))
 
 #Show list of stats associated with user IF logged in  
+# CREATES USER STATS PAGE
 @app.route('/user_stats')
 def user_stats():
     if current_user.is_authenticated:
         user_id = current_user.id
         my_scores = Score.query.filter_by(user_id=user_id)
-        return render_template('user.html', user=my_scores)
+        return render_template('user.html', user=my_scores, title="Profile")
     return render_template('user.html', title='Profile')
 
 #Register score into the database
@@ -77,43 +82,68 @@ def register_stats():
 def game():
     allPuzzles = Puzzle.query.all()
     return render_template('game.html', title='Game', puzzles = allPuzzles)
-
-
+# CREATES LEADERBOARD PAGE
 @app.route('/leaderboard', methods=['GET', 'POST'])
 def leaderboard():
     all_scores = Score.query.all()
+    user = User.query.all()
     if current_user.is_authenticated:
         user_name = current_user.username
         return render_template('leaderboard.html', title='Leaderboard', scores=all_scores, user_name=user_name)
     return render_template('leaderboard.html', title='Leaderboard', scores=all_scores)
 
-
-#Db testing
-@app.route('/update_puzzle/', methods = ['post'])
+#db testing
+@app.route('/update_puzzle', methods = ['post'])
 def update():
-    temp = request.get_json()
-    print(temp)
+    temp01 = request.get_json()
+    temp02 = json.loads(temp01)
+    
+    pattern01 = json.dumps(temp02[0])
+    pattern02 = json.dumps(temp02[1])
+    pattern03 = json.dumps(temp02[2])
+    
     puzzle = Puzzle(
-        puzzle01 = temp,
-        puzzle02 = temp,
-        puzzle03 = temp
-        
+        puzzle01 = pattern01,
+        puzzle02 = pattern02,
+        puzzle03 = pattern03,
     )
+    
     db.session.add(puzzle)
     db.session.commit()
+    '''
+    x = Puzzle.query.all()
+    for y in x:
+        db.session.delete(y)
+    db.session.commit()
+    '''
     return  render_template('game.html', title = 'Game')
 
-@app.route('/register_game', methods=['GET', 'POST'])
-def results():
-    all_scores = Puzzle.query.all()
-    return render_template('game.html', scores=all_scores)
-
+# CREATES ADMIN PAGE
 @app.route('/admin')
 @login_required
 def admin():
     id = current_user.id
     if id == 4:
-        return render_template('admin.html', title='Admin')
+        all_puzzles = Puzzle.query.all()
+        return render_template('admin.html', title='Admin', puzzles = all_puzzles)
     else:
         flash("You are not authorized to access this page")
         return redirect(url_for('index'))
+
+
+@app.route('/updateDate', methods = ['post'])
+def updatingDate():
+    
+    temp01 = request.get_json()
+    temp02 = json.loads(temp01)
+    
+    selectedId = temp02[0]
+    newDate = temp02[1]
+   
+    row = Puzzle.query.get(id)
+    newRow = Puzzle(
+        date = newDate,
+        id = selectedId
+    )
+   
+    return render_template('admin.html', title = 'Admin')

@@ -5,22 +5,24 @@
 <script type="text/javascript"> user_name = '{{ user_name }}'</script>
 
 <h1>Leaderboard</h1>
-<!-- Leaderboard Table filled with all statistics -->
-<table id="myTable" class="tablesorter">
-    <thead>
-        <tr> 
-            <th> USERNAME </th>
-            <th> DATE </th>
-            <th> SCORE </th>
-        </tr>
-    </thead>
+   
+
+    <!-- LEADERBOARD TABLE -->
+    <table id="myTable" class="tablesorter">
+        <thead>
+            <tr>
+                <th> USERNAME </th>
+                <th> DATE </th>
+                <th> SCORE </th>
+            </tr>
+        </thead>
         <tbody>
             {% for score in scores %} 
-            <tr>
-                <td> {{ score.user.username }} </td>
-                <td> {{ score.date }} </td>
-                <td> {{ score.user_score }}</td>
-            </tr>
+                <tr>
+                    <td> {{ score.user.username }} </td>
+                    <td> {{ score.date }} </td>
+                    <td> {{ score.user_score }}</td>
+                </tr>
             {% endfor %} 
     </tbody>
 </table>

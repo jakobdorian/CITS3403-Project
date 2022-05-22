@@ -27,3 +27,7 @@ pip install -r requirements.txt
 ```
 flask run
 ```
+## (Optionally), run unit testing with this command
+```
+python3 unit_test.py
+```

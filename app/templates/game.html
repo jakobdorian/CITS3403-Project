@@ -7,7 +7,6 @@
   <script src = "{{ url_for('static', filename='js/game.js') }}"></script>
     
   <div class="container">
-    <h2>Modal Example</h2>
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Your Results</button>
   
@@ -40,7 +39,6 @@
           <div class = 'summaryRes' id = 'summary'>
           </div>
           <div class="modal-footer" id = 'footer'>
-            <!--<button type="button" class="btn btn-default">SHARE</button>-->
           </div>
         </div>
         
@@ -48,28 +46,6 @@
     </div>
     
   </div>
-  <!-- MORE TESTING-->
-  <form action = "/update_puzzle", methods = "post">
-    <button id = "testing01" type = 'button' type ='submit' onclick ="testBackend()"> IDK WHAT IM DOING </button>
-  </form>  
-  <table >
-    <thead>
-        <tr>
-            <th> Puzzle01 </th>
-            <th> Puzzle02 </th>
-            <th> Puzzle03 </th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for puzzle in puzzles %} 
-            <tr>
-                <td> {{ puzzle.puzzle01 }} </td>
-                <td> {{ puzzle.puzzle02 }} </td>
-                <td> {{ puzzle.puzzle03 }}</td>
-            </tr>
-        {% endfor %} 
-    </tbody>
-</table>
 
 </body>
 
