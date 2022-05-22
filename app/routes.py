@@ -132,21 +132,19 @@ def admin():
         return redirect(url_for('index'))
 
 
-'''
 @app.route('/updateDate', methods = ['post'])
 def updatingDate():
     
     temp01 = request.get_json()
     temp02 = json.loads(temp01)
     
-    id = temp02[0]
+    selectedId = temp02[0]
     newDate = temp02[1]
-    
-    puzzle = Puzzle(
-        id = id,
+   
+    row = Puzzle.query.get(id)
+    newRow = Puzzle(
         date = newDate
+        id = selectedId
     )
-    db.session.add(puzzle)
-    db.session.commit()
+   
     return render_template('admin.html', title = 'Admin')
-'''
