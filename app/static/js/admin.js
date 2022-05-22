@@ -28,7 +28,7 @@ function insertPattern(){
 
     //sending to backend
     const sendPuzzle= JSON.stringify(patternList) //Stringify converts a JS value to JSON
-    window.alert('Successfully added patterns, refresh to view new database')
+    window.alert('Successfully Added! Refresh to View Changes!')
     $.ajax({
         url:"/update_puzzle",
         type:"POST",
@@ -37,25 +37,46 @@ function insertPattern(){
     });
 }
 
+//fucntion to add onlcik to submit and pass id
+function openDateEditor(id){
+    var btn = document.getElementById('updateDateBtn')
+    btn.onclick = function(){updateDate(id)}
+}
+
 //function to update Date
 function updateDate(id){
     var temp = []
-    var input = document.getElementById('myInput').value;
-    if (input == ''){
-        window.alert('Please Enter a Date')
+
+    input = document.getElementById('dateInput').value;
+    if (input == ""){
+        window.alert('Please enter a Date!')
         return
     }
     temp.push(id)
     temp.push(input)
-    
-    const sendDate = JSON.stringify(temp)
-    console.log(sendDate) 
 
-    window.alert('Successfully updated date')
+    //sending to backend
+    const sendDate = JSON.stringify(temp)
+    window.alert('Successfully Updated! Refresh to View Changes!')
     $.ajax({
-        url:"/updateDate",
-        type:"POST",
-        contentType: "application/json",
-        data: JSON.stringify(sendDate)              
-    });
+        url:'/updateDate',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(sendDate)
+    })
+    
+}
+
+
+//function to delete row
+function delRow(id){
+    console.log(id)
+    const sendId = JSON.stringify(id)
+    window.alert('Successfully Deleted! Refresh to View Changes!')
+    $.ajax({
+        url:'delRow',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(sendId)
+    })
 }

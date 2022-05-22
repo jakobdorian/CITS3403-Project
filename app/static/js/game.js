@@ -175,8 +175,6 @@ function checker(arr1,arr2,id){
             }
             finalRes = 'Final Score: ' + finalScore
 
-
-
             //send final result to routes to be included in leaderboards
             const sendscore= JSON.stringify(finalScore) //Stringify converts a JS value to JSON
             window.alert(sendscore)
@@ -199,11 +197,12 @@ function checker(arr1,arr2,id){
             a.appendChild(b)
             a.setAttribute('id','button03')
             a.setAttribute('class','btn btn-default')
-            a.onclick = function(){shareRes(score1, G1C1, G1C2, score2, G2C1, G2C2, score3, G3C1, G3C2, finalScore);}
+            a.onclick = function(){
+                shareRes(score1, G1C1, G1C2, score2, G2C1, G2C2, score3, G3C1, G3C2, finalScore);
+                var youveshared = document.createTextNode('- Result copied to your clipboard!')
+                a.appendChild(youveshared);
+            }
             footer.appendChild(a)
-
-
-
         }
     }
 }

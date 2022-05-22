@@ -1,7 +1,8 @@
+from distutils.log import error
 from ftplib import B_CRLF
 import json
 
-from requests import JSONDecodeError
+#from requests import JSONDecodeError
 from app import app, db
 from app.forms import LoginForm, RegistrationForm
 from app.models import User, Score, Puzzle
@@ -13,6 +14,7 @@ import random
 import sqlite3
 
 # CREATES HOME PAGE
+@app.route('/')
 @app.route('/home')
 def index():
     return render_template('home.html', title = 'Home')
@@ -28,41 +30,46 @@ def register():
         db.session.add(user)
         db.session.commit()
         flash('Congratulations, you are now a user!')
-        #CHANGE THIS TO GO STRAIGHT TO STATS PAGE
-        return redirect(url_for('login'))
+        #CHANGED THIS TO GO STRAIGHT TO GAME- COULD BE STATS PAGE?
+        return redirect(url_for('game.html'))
     return render_template('register.html', title='Register', form=form)
 # CREATES LOGIN PAGE
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    error = None
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
-        if user is None or not user.check_password(form.password.data):
-            flash('Invalid username or password')
-            return redirect(url_for('login'))
+        if user is None:
+            flash('You dont have an account with us -Please Register here!')
+            return redirect(url_for('register'))
+        if user is not user.check_password(form.password.data):
+            error = 'You used an invalid username or password!'
+            return render_template('login.html', title='Sign In', form=form, error=error)
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('index')
         return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
+
 # CREATES LOGOUT PAGE
 @app.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+#Show list of stats associated with user IF logged in  
 # CREATES USER STATS PAGE
 @app.route('/user_stats')
 def user_stats():
     if current_user.is_authenticated:
         user_id = current_user.id
-        #show list of stats associated with user IF logged in  
         my_scores = Score.query.filter_by(user_id=user_id)
         return render_template('user.html', user=my_scores, title="Profile")
     return render_template('user.html', title='Profile')
-
 
 #Register score into the database
 @app.route('/register_stats', methods=['POST'])
@@ -77,7 +84,6 @@ def register_stats():
     db.session.commit()
     return redirect(url_for('user_stats'))
 
-@app.route('/')
 @app.route('/game')
 def game():
     allPuzzles = Puzzle.query.all()
@@ -88,10 +94,9 @@ def leaderboard():
     all_scores = Score.query.all()
     user = User.query.all()
     if current_user.is_authenticated:
-        user_id = current_user.id
-    
-    
-    return render_template('leaderboard.html', title='Leaderboard', scores=all_scores, user=user)
+        user_name = current_user.username
+        return render_template('leaderboard.html', title='Leaderboard', scores=all_scores, user_name=user_name)
+    return render_template('leaderboard.html', title='Leaderboard', scores=all_scores)
 
 #db testing
 @app.route('/update_puzzle', methods = ['post'])
@@ -111,12 +116,7 @@ def update():
     
     db.session.add(puzzle)
     db.session.commit()
-    '''
-    x = Puzzle.query.all()
-    for y in x:
-        db.session.delete(y)
-    db.session.commit()
-    '''
+    
     return  render_template('game.html', title = 'Game')
 
 # CREATES ADMIN PAGE
@@ -132,21 +132,34 @@ def admin():
         return redirect(url_for('index'))
 
 
-'''
+#update date column in Puzzle
 @app.route('/updateDate', methods = ['post'])
 def updatingDate():
     
     temp01 = request.get_json()
     temp02 = json.loads(temp01)
     
-    id = temp02[0]
+    selectedId = temp02[0]
     newDate = temp02[1]
+   
+    row = Puzzle.query.get(selectedId)
+    row.date = newDate
     
-    puzzle = Puzzle(
-        id = id,
-        date = newDate
-    )
-    db.session.add(puzzle)
     db.session.commit()
+   
     return render_template('admin.html', title = 'Admin')
-'''
+
+#delete row in Puzzle
+@app.route('/delRow', methods = ['post'])
+def delRow():
+    
+    temp = request.get_json()
+    selectedId = json.loads(temp)
+    
+    row = Puzzle.query.get(selectedId)
+    db.session.delete(row)
+    db.session.commit()
+    
+    return render_template('admin.html', title = 'Admin')
+    
+    

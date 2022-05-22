@@ -15,8 +15,7 @@
                 <th> Pattern 02 </th>
                 <th> Pattern 03 </th>
                 <th> Date </th>
-                <th> Edit Date </th>
-                <th> Delete </th>
+                <th> Admin Options </th>
             </tr>
         </thead>
         <tbody>
@@ -28,13 +27,32 @@
                     <td> {{ puzzle.puzzle03 }}</td>
                     <td> {{ puzzle.date}} </td>
                     <td> 
-                        <input type = 'text' id = 'myInput' placeholder = 'MM/DD/YYYY'>
-                        <button onclick = 'updateDate({{puzzle.id}})'>Submit</button>
+                        <button onclick = 'openDateEditor({{puzzle.id}})'data-toggle="modal" data-target="#myModal">Edit</button>
+                        <button onclick = 'delRow({{puzzle.id}})'> Delete </button>
                     </td>
-                    <td> <button> Delete Row </button></td>
                 </tr>
             {% endfor %} 
         </tbody>
     </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Date Editor</h4>
+                </div>
+                <div class="modal-body" id = "modalBody">
+                    <p style = 'color:black'>Please enter in (MM/DD/YYYY) format: </p>
+                    <input type ='Text' id = 'dateInput' placeholder = 'MM/DD/YYYY'>
+                </div>
+                <div class="modal-footer" id = 'footer'>
+                    <button id = 'updateDateBtn'>Submit </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 {% endblock %}
